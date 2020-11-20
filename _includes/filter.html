@@ -1,0 +1,49 @@
+{% assign current = page.url | downcase | split: '/' %}
+{% assign main = current[2] %}
+{% assign middle = current[3] %}
+
+<ul class="array">
+    {% for tag in site.data.categories_main %}
+        {% if tag.name == main or (main == null and tag.name == "all") %}
+            <li class="cell upper">
+        {% else %}
+            <li class="cell upper normal">
+        {% endif %}
+                <a href="/blog/{{ tag.name }}">{{ tag.name }}</a>
+            </li>
+    {% endfor %}
+</ul>
+
+{% assign categories_middle = null %}
+{% case main %}
+    {% when "algorithm" %}
+        {% assign categories_middle = site.data.categories_algorithm %}
+    {% else %}
+{% endcase %}
+
+{% if categories_middle | size > 0 %}
+<div class="categories-middle">
+    <ul class="array">
+        {% for tag in categories_middle %}
+            {% if tag.name == middle or (middle == null and tag.name == "all") %}
+                <li class="cell upper middle">
+            {% else %}
+                <li class="cell upper normal middle">
+            {% endif %}
+                    <a href="/blog/{{ current[2] }}/{{ tag.name }}">{{ tag.name }}</a>
+                </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+
+<div>{{ total }}</div>
+
+<ul class="catalogue">
+{% assign sorted = site.pages | sort: 'date' | reverse %} 
+{% for page in sorted %} 
+    {% if page.blog == true %} 
+        {% include post-list.html %} 
+    {% endif %} 
+{% endfor %}
+</ul>
