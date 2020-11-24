@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Juneee Blog</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/assets/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700" rel="stylesheet">
+    <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+
+    <!-- highlight -->
+    <script src="/assets/js/script_highlight.js"></script>
+    <script src="/assets/js/script_hljs_line.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad();
+        hljs.initLineNumbersOnLoad();
+    </script>
+
+    <!-- mathjax -->
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+        });
+    </script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+</head>
+
+
+  <body>
+    
+    <nav class="nav">
+    <div class="nav-container">
+        <div class="nav-container-home">
+            <a href="/">
+                <img src="/img/shiba.png" class="img-profile" alt="프로필 사진" width="40" height="40"/>
+                <h3 class="nav-title">Juneee Blog</h2>
+            </a>
+        </div>
+        <ul>
+            <li class="transition">
+                <a href="/"  class="active">Home</a>
+            </li>
+            <!-- <li class="transition">
+                <a href="/blog" >Blog</a>
+            </li> -->
+            <li class="transition">
+                <a href="/about" >About</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+    
+
+    <main>
+        <div class="post">
+    <div class="post-info">
+        <span class="post-category">data-structure</span>
+        <span class="post-date">2020.10.11</span>
+        <h1 class="post-title">
+            [BST 2부] Red-Black 트리
+        </h1>
+        
+    </div>
+
+    <article>
+        <h1 id="이론">이론</h1>
+
+<p>Red Black 트리는 Red에서 시작한다.</p>
+
+<p>$ d(n) = max(d(n-1), d(n-2)) $</p>
+
+<p><strong>123</strong></p>
+
+<blockquote>
+  <p>인용문</p>
+</blockquote>
+
+<p><code class="language-plaintext highlighter-rouge">인라인</code></p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">printf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span><span class="mi">10</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>In veniam officia laboris sunt reprehenderit culpa qui laboris elit pariatur aliqua deserunt. Voluptate officia amet elit sit anim excepteur consectetur eiusmod deserunt ipsum. Ad excepteur reprehenderit irure cillum ullamco dolor velit. Voluptate proident eiusmod in qui deserunt velit dolore ut labore anim commodo elit pariatur.</p>
+
+<p>Voluptate id esse aliqua deserunt in. Qui deserunt dolor do dolor. Ut excepteur in velit eiusmod dolore aliquip cillum labore qui sint aliqua Lorem esse sit. Fugiat reprehenderit magna incididunt dolore ut. Excepteur et officia nisi non eiusmod Lorem deserunt ipsum elit veniam ad. Eiusmod proident adipisicing in Lorem.</p>
+
+<p>Ipsum laborum ad aliquip minim in ullamco incididunt laborum labore. Est enim mollit culpa incididunt aliqua reprehenderit fugiat velit cupidatat sunt. Ad dolor dolor cillum sit laborum ullamco pariatur.</p>
+
+<p>Irure pariatur commodo ea ea sunt ullamco quis aliquip. Cupidatat irure sunt consectetur culpa amet fugiat occaecat in. Laborum commodo minim Lorem incididunt aliquip incididunt do eiusmod incididunt Lorem. Ea esse dolor pariatur aliquip proident ea dolor excepteur et voluptate nulla pariatur commodo culpa.</p>
+
+<p>Excepteur do fugiat culpa quis anim. Id aliqua tempor sunt est eiusmod quis aute enim. Velit eiusmod adipisicing irure ad exercitation proident do enim magna ut occaecat do dolor. Nulla sit nisi consectetur aliqua ullamco occaecat ex. Aute enim nostrud excepteur ex pariatur. Aute ut dolor exercitation cupidatat qui.</p>
+
+<p>Sit laboris eu cillum est. Aliquip velit ullamco magna Lorem. Aliqua adipisicing aliqua anim proident cillum do id commodo magna elit fugiat magna elit consequat. Aute laborum ad irure in fugiat excepteur dolor.</p>
+
+<p>Enim dolor cupidatat cillum elit quis quis enim tempor excepteur fugiat aliqua. Irure veniam fugiat sint laborum ad ad aute culpa. Ut exercitation adipisicing eiusmod sit ut laboris cillum laborum.</p>
+
+<p>Officia ad pariatur consectetur aliqua ea ipsum culpa elit dolor culpa ea. Consequat enim incididunt ex et fugiat minim esse esse velit sit quis laborum occaecat. Nulla exercitation adipisicing labore ea occaecat sit minim. Tempor tempor nisi ad in proident fugiat elit consequat.</p>
+
+<p>Voluptate labore ad ad Lorem minim eiusmod tempor duis aute voluptate incididunt. Id proident incididunt minim id culpa est incididunt minim cillum ut non sunt. Nulla veniam non eiusmod labore nisi pariatur duis do.</p>
+
+<p>Id ea minim tempor id. Mollit ea aliquip Lorem aute magna aliquip proident sunt in in. Proident adipisicing mollit ipsum ipsum mollit ex esse ad cupidatat proident duis. Magna ex mollit aliquip officia minim fugiat velit reprehenderit pariatur duis voluptate. Enim velit voluptate ullamco veniam labore amet minim commodo esse culpa. Aliquip irure mollit non ea officia aliqua. In sunt pariatur magna amet elit ad cillum elit qui eu officia.</p>
+
+<h2 id="123">123</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>a</th>
+      <th>b</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>n</td>
+      <td>a</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Sunt amet dolore excepteur reprehenderit cupidatat commodo proident. Dolor ea in incididunt pariatur amet minim sit velit irure exercitation magna. Sit cupidatat deserunt proident veniam ut velit excepteur pariatur est et do veniam ea.</p>
+
+<p>Sunt amet dolore excepteur reprehenderit cupidatat commodo proident. Dolor ea in incididunt pariatur amet minim sit velit irure exercitation magna. Sit cupidatat deserunt proident veniam ut velit excepteur pariatur est et do veniam ea.</p>
+
+<p>Sunt amet dolore excepteur reprehenderit cupidatat commodo proident. Dolor ea in incididunt pariatur amet minim sit velit irure exercitation magna. Sit cupidatat deserunt proident veniam ut velit excepteur pariatur est et do veniam ea.</p>
+
+<p>Sunt amet dolore excepteur reprehenderit cupidatat commodo proident. Dolor ea in incididunt pariatur amet minim sit velit irure exercitation magna. Sit cupidatat deserunt proident veniam ut velit excepteur pariatur est et do veniam ea.</p>
+
+<hr />
+
+<hr />
+
+<p><del>alpha</del></p>
+
+    </article>
+
+    <div class="post-navbar">
+
+    </div>
+
+    <!-- <a href="#" class="top">Top</a> -->
+</div>
+
+<div class="pagination">
+    
+    <a href="/data-structure/2020/10/11/boj11_copy-copy-10/" class="left arrow">&#8592;</a>
+    
+    
+    
+</div>
+    </main>
+
+    <footer>
+    <address class="footer_wrap">
+        <div class="information">
+            <span>
+                &copy; <time datetime="2020-11-24 19:49:51 +0000">2020</time> Gyojun An. Made
+                with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
+            </span>
+        </div>
+    </address>
+</footer>
+
+  </body>
+</html>
