@@ -22,7 +22,7 @@
     <meta property="og:title" content="Blog">
     <meta property="og:site_name" content="Juneee Blog">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://altera520.github.io//categories/data-structure/index.html">
+    <meta property="og:url" content="https://altera520.github.io//categories/tech/tags/java/index.html">
     <meta property="og:description" content="CS 지식과 경험들을 기록합니다.">
 
     <title>Blog</title>
@@ -31,6 +31,7 @@
     <link rel="stylesheet" href="/assets/main.css">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700" rel="stylesheet">
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+    <link href="http://cdn.jsdelivr.net/gh/joungkyun/font-d2coding/d2coding.css" rel="stylesheet" type="text/css">
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
@@ -52,6 +53,20 @@
         });
     </script>
     <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    <!-- filter -->
+    <script>
+        var isActive = true;
+    
+        function toggle(){
+            isActive = !isActive;
+            var middle = document.getElementsByClassName('categories-middle');
+
+            if(middle){
+                middle[0].style.display = isActive ? 'none' : 'block';
+            }
+        }
+    </script>
 </head>
 
 
@@ -100,71 +115,69 @@
 
 
 
+<!-- Rounded switch -->
+<label class="switch">
+    <input type="checkbox" onclick="toggle();">
+    <span class="slider round"></span>
+</label>
+
 <ul class="array">
     
-        
-            <li class="cell upper normal">
-        
-        
-            <a href="/">all</a>
-        
-            </li>
     
+    <li class="cell upper normal">
         
-            <li class="cell upper">
         
+        <a href="/">all</a>
         
-            <a href="/categories/data-structure">data-structure</a>
-        
-            </li>
+    </li>
     
-        
-            <li class="cell upper normal">
-        
-        
-            <a href="/categories/algorithm">algorithm</a>
-        
-            </li>
     
+    <li class="cell upper normal">
         
-            <li class="cell upper normal">
         
+        <a href="/categories/algorithm">algorithm</a>
         
-            <a href="/categories/programming">programming</a>
-        
-            </li>
+    </li>
     
-        
-            <li class="cell upper normal">
-        
-        
-            <a href="/categories/db">db</a>
-        
-            </li>
     
+    <li class="cell upper">
         
-            <li class="cell upper normal">
         
+        <a href="/categories/tech">tech</a>
         
-            <a href="/categories/os">os</a>
-        
-            </li>
+    </li>
     
-        
-            <li class="cell upper normal">
-        
-        
-            <a href="/categories/network">network</a>
-        
-            </li>
     
+    <li class="cell upper normal">
         
-            <li class="cell upper normal">
+        
+        <a href="/categories/db">db</a>
+        
+    </li>
+    
+    
+    <li class="cell upper normal">
         
         
-            <a href="/categories/etc">etc</a>
+        <a href="/categories/os">os</a>
         
-            </li>
+    </li>
+    
+    
+    <li class="cell upper normal">
+        
+        
+        <a href="/categories/network">network</a>
+        
+    </li>
+    
+    
+    <li class="cell upper normal">
+        
+        
+        <a href="/categories/etc">etc</a>
+        
+    </li>
     
 </ul>
 
@@ -172,11 +185,53 @@
 
 
 
+<div class="categories-middle">
+    <ul class="array">
+        
+        
+        <li class="cell upper normal middle">
+            
+            
+            <a href="/categories/tech/">all</a>
+            
+        </li>
+        
+        
+        <li class="cell upper middle">
+            
+            
+            <a href="/categories/tech/tags/java">java</a>
+            
+        </li>
+        
+        
+        <li class="cell upper normal middle">
+            
+            
+            <a href="/categories/tech/tags/aws">aws</a>
+            
+        </li>
+        
+        
+        <li class="cell upper normal middle">
+            
+            
+            <a href="/categories/tech/tags/docker">docker</a>
+            
+        </li>
+        
+    </ul>
+</div>
+
 
 <div></div>
 
 <!-- <ul class="catalogue">
  
+ 
+     
+ 
+     
  
      
  
@@ -202,7 +257,7 @@
      
           
 <li class="catalogue-item">
-    <a href="/data-structure/2020/11/28/binary_search_tree_1-copy/" >
+    <a href="/tech/2020/11/29/binary_search_tree_1-copy-2/" >
         
         <div class="catalogue-info transition">
             <h1 class="catalogue-title">
@@ -214,14 +269,18 @@
             </p>
         </div>
     </a>
-    <p class="catalogue-meta">Posted by Jun on 2020-11-28</p>
+    <p class="catalogue-meta">Posted by Jun on 2020-11-29</p>
     <div>
-        <a class="catalogue-type" href="/categories/data-structure">
-            #data-structure
+        <a class="catalogue-type" href="/categories/tech">
+            #tech
         </a>
         
-        <a class="catalogue-type" href="/blog/data-structure/BST">
-            #BST
+        <a class="catalogue-type" href="/categories/tech/tags/java">
+            #java
+        </a>
+        
+        <a class="catalogue-type" href="/categories/tech/tags/docker">
+            #docker
         </a>
         
     </div>
@@ -246,7 +305,7 @@
     <address class="footer_wrap">
         <div class="information">
             <span>
-                &copy; <time datetime="2020-11-30 16:09:23 +0000">2020</time> Gyojun An. Made
+                &copy; <time datetime="2020-12-03 08:07:11 +0000">2020</time> Gyojun An. Made
                 with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
             </span>
         </div>

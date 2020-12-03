@@ -22,7 +22,7 @@
     <meta property="og:title" content="[BST 1부] 이진탐색트리">
     <meta property="og:site_name" content="Juneee Blog">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://altera520.github.io//data-structure/2020/11/28/binary_search_tree_1-copy/">
+    <meta property="og:url" content="https://altera520.github.io//algorithm/2020/11/28/binary_search_tree_1-copy/">
     <meta property="og:description" content="">
 
     <title>[BST 1부] 이진탐색트리</title>
@@ -31,6 +31,7 @@
     <link rel="stylesheet" href="/assets/main.css">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700" rel="stylesheet">
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+    <link href="http://cdn.jsdelivr.net/gh/joungkyun/font-d2coding/d2coding.css" rel="stylesheet" type="text/css">
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
@@ -52,6 +53,20 @@
         });
     </script>
     <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    <!-- filter -->
+    <script>
+        var isActive = true;
+    
+        function toggle(){
+            isActive = !isActive;
+            var middle = document.getElementsByClassName('categories-middle');
+
+            if(middle){
+                middle[0].style.display = isActive ? 'none' : 'block';
+            }
+        }
+    </script>
 </head>
 
 
@@ -85,7 +100,7 @@
     <main>
         <div class="post">
     <div class="post-info">
-        <span class="post-category">data-structure</span>
+        <span class="post-category">algorithm</span>
         <span class="post-date">2020.11.28</span>
         <h1 class="post-title">
             [BST 1부] 이진탐색트리
@@ -182,7 +197,12 @@
 
 
 
-<div class="pagination" style="justify-content: flex-end;">
+<div class="pagination" style="justify-content: flex-start;">
+    
+    <a href="/tech/2020/11/29/binary_search_tree_1-copy-2/" class="left" title="[BST 1부] 이진탐색트리">
+        <i class="fas fa-angle-left"></i>
+        <span>[BST 1부] 이진탐색트리</span>
+    </a>
     
 
     
@@ -213,7 +233,7 @@
     <address class="footer_wrap">
         <div class="information">
             <span>
-                &copy; <time datetime="2020-11-30 16:09:23 +0000">2020</time> Gyojun An. Made
+                &copy; <time datetime="2020-12-03 08:07:11 +0000">2020</time> Gyojun An. Made
                 with Jekyll using the <a href="https://github.com/chesterhow/tale/">Tale</a> theme.
             </span>
         </div>
