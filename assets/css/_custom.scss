@@ -1,0 +1,38 @@
+.img-profile {
+    float: left;
+    padding-top: 9px;
+    padding-right: 8px;
+}
+
+.page {
+    max-width: 1000px;
+    width: 65%;
+}
+
+.utterances {
+    max-width: 1000px;
+}
+
+code {
+    box-sizing: border-box;
+    border-radius: 4px;
+    line-height: 1.5;
+    padding: 4px;
+    font-weight: 400;
+    background-color: #f5f5f5 !important;
+}
+
+.highlight {
+    code {
+        background-color: $code-background-color !important;
+    }
+}
+
+.single {
+    #comments {
+        padding: 4rem 0 2rem;
+    }
+}
+
+@import 'toc';
+@import 'post_nav';

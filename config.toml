@@ -1,0 +1,145 @@
+baseURL = "https://altera520.github.io/"
+# [en, zh-cn, fr, ...] determines default content language
+defaultContentLanguage = "en"
+# language code
+languageCode = "en"
+title = "Juneee blog"
+
+# Change the default theme to be use when building the site with Hugo
+theme = "LoveIt"
+summaryLength=50
+
+[params]
+    # LoveIt theme version
+    version = "0.2.X"
+    defaultTheme = "auto"
+
+    # Home page config
+    [params.home]
+    # LoveIt NEW | 0.2.0 amount of RSS pages
+        rss = 10
+
+        [params.header]
+            # desktop header mode ("fixed", "normal", "auto")
+            desktopMode = "auto"
+            # mobile header mode ("fixed", "normal", "auto")
+            mobileMode = "auto"
+
+        [params.footer]
+            enable = true
+            since = 2020
+
+        # Home page profile
+        [params.home.profile]
+            enable = true
+            # URL of avatar shown in home page
+            avatarURL = "/images/profile.jpg"
+            # LoveIt CHANGED | 0.2.7 title shown in home page (HTML format is supported)
+            title = ""
+            # subtitle shown in home page
+            subtitle = "Do not stay. Always look"
+            # whether to use typeit animation for subtitle
+            typeit = true
+            # whether to show social links
+            social = true
+
+        # Home page posts
+        [params.home.posts]
+            enable = true
+            # special amount of posts in each home posts page
+            paginate = 6
+            # LoveIt DELETED | 0.2.0 replaced with hiddenFromHomePage in params.page
+            # default behavior when you don't set "hiddenFromHomePage" in front matter
+            defaultHiddenFromHomePage = false
+
+    # Social config about the author
+    [params.social]
+        GitHub = "Altera520"
+        Instagram = "xxxx"
+        Email = "sencom1028@gmail.com"
+        RSS = true
+
+    [params.page]
+        lightgallery = true
+        [params.page.share]
+            enable = true
+            Twitter = true
+            Facebook = true
+            Linkedin = true
+            Line = true
+        [params.page.code]
+            # whether to show the copy button of the code block
+            copy = true
+            # the maximum number of lines of displayed code by default
+            maxShownLines = 500
+        [params.page.comment]
+            enable = true
+            [params.page.comment.utterances]
+                enable = true
+                repo="Altera520/blog-comment"
+                issueTerm="title"
+                label="comment"
+                lightTheme = "github-light"
+                darkTheme = "github-dark"
+      [params.analytics]
+            enable = true
+            # Google Analytics
+            [params.analytics.google]
+                id = "G-0HZQPQBVVJ"
+                # whether to anonymize IP
+                anonymizeIP = true
+    [params.typeit]
+        # typing speed between each step (measured in milliseconds)
+        speed = 100
+        # blinking speed of the cursor (measured in milliseconds)
+        cursorSpeed = 500
+        # character used for the cursor (HTML format is supported)
+        cursorChar = "|"
+        # cursor duration after typing finishing (measured in milliseconds, "-1" means unlimited)
+        duration = -1
+
+[outputs]
+    home = ["HTML", "RSS", "JSON"]
+
+[author]
+    name = "altera520"
+    #link = ""
+
+[menu]
+    [[menu.main]]
+        identifier = "posts"
+        # you can add extra information before the name (HTML format is supported), such as icons
+        pre = ""
+        # you can add extra information after the name (HTML format is supported), such as icons
+        post = ""
+        name = "Posts"
+        url = "/posts/"
+        # title will be shown when you hover on this menu link
+        title = ""
+        weight = 1
+    [[menu.main]]
+        identifier = "tags"
+        pre = ""
+        post = ""
+        name = "Tags"
+        url = "/tags/"
+        title = ""
+        weight = 2
+    [[menu.main]]
+        identifier = "categories"
+        pre = ""
+        post = ""
+        name = "Categories"
+        url = "/categories/"
+        title = ""
+        weight = 3
+
+# Markup related configuration in Hugo
+[markup]
+    # Syntax Highlighting (https://gohugo.io/content-management/syntax-highlighting)
+        [markup.highlight]
+            # false is a necessary configuration (https://github.com/dillonzq/LoveIt/issues/158)
+            noClasses = false
+            [markup.goldmark]
+                [markup.goldmark.renderer]
+                    unsafe = true
