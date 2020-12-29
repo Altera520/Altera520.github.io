@@ -4,9 +4,30 @@
     padding-right: 8px;
 }
 
-.page {
-    max-width: 1000px;
-    width: 65%;
+// .page {
+//     max-width: 1000px;
+//     //width: 65%;
+// }
+
+@media only scree and (max-width: 960px){
+    .page {
+        max-width: 1000px;
+        width: 80%;
+    }   
+}
+
+@media only scree and (max-width: 1200px){
+    .page {
+        max-width: 1000px;
+        width: 65%;
+    }   
+}
+
+@media only scree and (max-width: 1440px){
+    .page {
+        max-width: 1000px;
+        width: 70%;
+    }   
 }
 
 .utterances {
@@ -28,6 +49,10 @@ code {
     }
 }
 
+[theme=dark] code{
+    background-color: $code-background-color-dark !important;
+}
+
 .single {
     #comments {
         padding: 4rem 0 2rem;
@@ -44,10 +69,6 @@ code {
 
     h3 {
         font-size: 20px;
-    }
-
-    .gist-file {
-
     }
 }
 
