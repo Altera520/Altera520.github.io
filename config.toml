@@ -12,7 +12,7 @@ summaryLength=50
 [params]
     # LoveIt theme version
     version = "0.2.X"
-    defaultTheme = "auto"
+    defaultTheme = "light"
 
     # Home page config
     [params.home]
@@ -55,7 +55,7 @@ summaryLength=50
     # Social config about the author
     [params.social]
         GitHub = "Altera520"
-        Instagram = "xxxx"
+        Instagram = "gj__an"
         Email = "sencom1028@gmail.com"
         RSS = true
 
