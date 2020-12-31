@@ -143,3 +143,12 @@ summaryLength=50
             [markup.goldmark]
                 [markup.goldmark.renderer]
                     unsafe = true
+
+# robots.txt
+enableRobotsTXT = true
+
+# sitemap 생성
+[sitemap]
+    changefreq = "daily" # always, hourly daily, weekly, monthly, yearly, never
+    filename = "sitemap.xml"
+    priority = 0.5

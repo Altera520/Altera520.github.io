@@ -4,6 +4,14 @@
     padding-right: 8px;
 }
 
+.single-title a {
+    color: #666666 !important;
+}
+
+[theme=dark] .single-title a {
+    color: #a9a9b3 !important;
+}
+
 // .page {
 //     max-width: 1000px;
 //     //width: 65%;
