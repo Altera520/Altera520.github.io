@@ -14,7 +14,7 @@ tags:
 
 - **root context**
     - `DispatcherServlet`이 여러개가 존재할때 공통으로 사용할 빈들을 root context에 선언해두고 서블릿간에 공유하기 위한 목적으로 사용한다.
-- **servelet context**
+- **servlet context**
     - servlet context에 등록되는 빈들은 해당 servlet context에서만 사용가능하다.        
 
 <br/>
