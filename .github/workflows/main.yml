@@ -15,6 +15,12 @@ jobs:
         with:
           submodules: true  # Fetch Hugo themes (true OR recursive)
           fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '12'
+        check-latest: true
+      - run: npm install
+      - run: npm init
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
@@ -23,7 +29,12 @@ jobs:
           # extended: true
 
       - name: Build
-        run: hugo --minify
+        run: hugo --minify && npm run algolia
+        env: 
+          ALGOLIA_APP_ID: ${{ secrets.ALGOLIA_APP_ID }}
+          ALGOLIA_ADMIN_KEY: ${{ secrets.ALGOLIA_ADMIN_KEY }}
+          ALGOLIA_INDEX_NAME: ${{ secrets.ALGOLIA_INDEX_NAME }}
+          ALGOLIA_INDEX_FILE: ${{ secrets.INDEX_FILE }}
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3

@@ -51,6 +51,18 @@ code {
     background-color: #f5f5f5 !important;
 }
 
+pre{
+    code {
+        box-sizing: border-box;
+        border-radius: 4px;
+        line-height: 1.5;
+        padding: 4px;
+        font-weight: 400;
+        background-color: #272c34 !important;
+        color: #eee !important;
+    }
+}
+
 .highlight {
     code {
         background-color: $code-background-color !important;
@@ -78,6 +90,37 @@ code {
     h3 {
         font-size: 20px;
     }
+}
+
+[theme=dark] #content {
+    font-size: 14px;
+
+    h2 {
+        border-bottom: 1.5px solid #363636 !important;
+        padding-bottom: 1.1rem;
+    }
+
+    h3 {
+        font-size: 20px;
+    }
+}
+
+h4, h5 {
+    font-size: 18px !important;
+}
+
+[theme=dark] .single .content>h4>.header-mark::before, [theme=dark] .single .content>h5>.header-mark::before, [theme=dark] .single .content>h6>.header-mark::before {
+    content: '';
+    color: #a9a9b3;
+}
+
+.single .content>h4>.header-mark::before, [theme=dark] .single .content>h5>.header-mark::before, [theme=dark] .single .content>h6>.header-mark::before {
+    content: '';
+}
+
+sup {
+    font-size: .7rem;
+    font-weight: 700;
 }
 
 @import 'toc';

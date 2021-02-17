@@ -12,10 +12,12 @@ tags:
 ## 싱글턴 정의
 
 GoF 디자인 패턴에서 **생성 패턴**으로 분류된다.       
-클래스에 대한 인스턴스가 오직 1개만 생성되어야 하는 경우에 사용하는 패턴이다.       
-다중 스레드 환경이라면 싱글턴을 설계할 때 **동시성(concurrency)** 을 필히 고려하여 **Thread-safe**하게 만들어야한다.
+클래스에 대한 인스턴스가 오직 1개만 생성되어야 하는 경우에 사용하는 패턴이다.
 
-<br/><br/>
+다중 스레드 환경이라면 싱글턴을 설계할 때 **동시성(concurrency)** 을 필히 고려하여 **Thread-safe**하게 만들어야한다.        
+다중 스레드 환경에서 동시성을 고려하지않고 싱글턴 클래스를 설계하면 인스턴스가 2개이상 생성될 수 있기에 예기치 못한 동작을 일으킬 수 있다.
+
+<br/>
 
 ## 싱글턴 패턴 구현 방식
 
@@ -205,15 +207,13 @@ public class ConfigurationBeanFactory {
 
 스프링에서 싱글턴을 관리하는 주체가 `ApplicationContext`이며 IoC 컨테이너, 스프링 컨테이너, 빈 팩토리, SingletonRegistry 등으로 불린다.
 
-{{<image src="/images/2021-01-06-singleton/ApplicationContext.png" width="100%">}}
+{{<image src="/images/2021-01-06-singleton/ApplicationContext.png" width="100%" caption="ApplicationContext 다이어그램">}}
 
 `ApplicationContext` 인터페이스는 `BeanFactory` 인터페이스를 상속하며, `BeanFactory` 인터페이스의 구현체가 `DefaultListableBeanFactory`이다.        
 대부분의 스프링 애플리케이션 컨텍스트는 `DefaultListableBeanFactory`를 빈 팩토리로 사용한다.
 - `DefaultListableBeanFactory` 클래스는 `SingletonBeanRegistry` 인터페이스를 구현하고 있는데 해당 구현부가 싱글턴을 관리하는 기능들을 포함하고 있다.
 
-{{<image src="/images/2021-01-06-singleton/DefaultListableBeanFactory.png" width="100%">}}
-
-<br/>
+{{<image src="/images/2021-01-06-singleton/DefaultListableBeanFactory.png" width="100%" caption="DefaultListableBeanFactory 다이어그램">}}
 
 Java와 스프링에서 싱글턴 객체의 라이프사이클이 다르다. 자바는 클래스 로더 기준이며, 스프링에서는 ApplicationContext가 기준이다.
 - **클래스 로더 기준**이라는 것은 톰캣이 WAR 파일을 만들게 되면, WAR 파일 하나 당 클래스 로더가 1:1 관계로 배치가된다. 다른 WAR 파일은 참조가 불가능하다.

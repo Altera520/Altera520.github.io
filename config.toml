@@ -98,8 +98,39 @@ summaryLength=50
         # cursor duration after typing finishing (measured in milliseconds, "-1" means unlimited)
         duration = -1
 
+    [params.search]
+        enable = true
+        # type of search engine ("lunr", "algolia")
+        type = "algolia"
+        # max index length of the chunked content
+        contentLength = 4000
+        # placeholder of the search bar
+        placeholder = ""
+        # LoveIt NEW | 0.2.1 max number of results length
+        maxResultLength = 10
+        # LoveIt NEW | 0.2.3 snippet length of the result
+        snippetLength = 30
+        # LoveIt NEW | 0.2.1 HTML tag name of the highlight part in results
+        highlightTag = "em"
+        # LoveIt NEW | 0.2.4 whether to use the absolute URL based on the baseURL in search index
+        absoluteURL = false
+        [params.search.algolia]
+            index = "tech_blog"
+            appID = "Z6XUTBRBTU"
+            searchKey = "93666bf981eb546301c54c0d60833095"
+
+    [outputFormats.Algolia]
+        baseName = "algolia"
+        isPlainText = true
+        mediaType = "application/json"
+        notAlternative = true
+
+    [params.algolia]
+        vars = ["title", "summary", "date", "publishdate", "expirydate", "permalink"]
+        params = ["categories", "tags"]
+
 [outputs]
-    home = ["HTML", "RSS", "JSON"]
+    home = ["HTML", "RSS", "JSON", "Algolia"]
 
 [author]
     name = "altera520"
