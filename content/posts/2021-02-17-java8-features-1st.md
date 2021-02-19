@@ -87,7 +87,7 @@ public class Program {
 
 함수형 인터페이스를 개발자가 직접 정의해서 사용할수도 있으나, 자바8에서 기본적으로 제공해주는 함수형 인터페이스들이 `java.util.function`에 존재한다.
 
-<details>
+<details open>
     <summary>기본 제공 함수형 인터페이스</summary>
 {{% table "100%" %}}
 | name | description |
@@ -204,7 +204,7 @@ public void run() {
     // static 메서드 레퍼런스
     UnaryOperator<String> concat2 = string -> Sample::concatStatic;     
 
-    // static 인스턴스 레퍼런스
+    // 인스턴스 레퍼런스
     Sample sample1 = new Sample();
     UnaryOperator<String> concat2 = string -> sample1::concatInstance;
 

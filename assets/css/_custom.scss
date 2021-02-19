@@ -105,17 +105,21 @@ pre{
     }
 }
 
-h4, h5 {
+h4 {
     font-size: 18px !important;
 }
 
+h5 {
+    font-size: 16px !important;
+}
+
 [theme=dark] .single .content>h4>.header-mark::before, [theme=dark] .single .content>h5>.header-mark::before, [theme=dark] .single .content>h6>.header-mark::before {
-    content: '';
+    content: '' !important;
     color: #a9a9b3;
 }
 
-.single .content>h4>.header-mark::before, [theme=dark] .single .content>h5>.header-mark::before, [theme=dark] .single .content>h6>.header-mark::before {
-    content: '';
+.single .content>h4>.header-mark::before, .single .content>h5>.header-mark::before, .single .content>h6>.header-mark::before {
+    content: '' !important;
 }
 
 sup {
