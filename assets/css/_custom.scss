@@ -106,11 +106,13 @@ pre{
 }
 
 h4 {
-    font-size: 18px !important;
+    font-size: 17px !important;
+    margin-bottom: 10px !important;
 }
 
 h5 {
     font-size: 16px !important;
+    margin-bottom: 5px !important;
 }
 
 [theme=dark] .single .content>h4>.header-mark::before, [theme=dark] .single .content>h5>.header-mark::before, [theme=dark] .single .content>h6>.header-mark::before {

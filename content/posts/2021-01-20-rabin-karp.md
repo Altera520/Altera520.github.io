@@ -6,7 +6,6 @@ categories:
     - Algorithm
 tags:
     - Rabin-Karp
-    - Theory
 ---
 
 ## Rabin Karp 정의

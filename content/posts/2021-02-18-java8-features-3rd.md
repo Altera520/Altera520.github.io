@@ -236,19 +236,15 @@ JDBC에서는 Java와 DB 스키마 사이에서 타입 컨버팅을 아래에 �
 
 {{<image src="/images/2021-02-18-java8-features-3rd/legacy-migration.png" width="100%" caption="Legacy Migration">}}
 
-<br/><br/>
-
-[**1부 - 특징 및 람다 표현식**]()        
-[**2부 - 스트림 API**]()      
-**3부 - java.time 패키지**        
-[**4부 - 나즈혼(Nashorn)**]()     
-[**5부 - 기타 변경사항**]()
-
 <br/>
 
 ## footnote        
 <a name="footnote_1">[1]</a> Date 타입과 TimeStamp 타입을 섞어 쓰면 a.equals(b)가 true라도 b.equals(a)는 false인 경우가 생길 수 있다.         
 <a name="footnote_2">[2]</a> Time Transition Rule이란 [일광 절약 시간제(DST, Daylight Saving Time)](https://en.wikipedia.org/wiki/Daylight_saving_time)와 같이 표준시를 부분 조정하는 규칙을 말한다.
+
+<br/>
+
+## Related Posts
 
 <br/>
 
@@ -259,4 +255,3 @@ JDBC에서는 Java와 DB 스키마 사이에서 타입 컨버팅을 아래에 �
 - [https://perfectacle.github.io/2018/09/26/java8-date-time/](https://perfectacle.github.io/2018/09/26/java8-date-time/)
 - [https://stackoverflow.com/questions/32437550/whats-the-difference-between-instant-and-localdatetime](https://stackoverflow.com/questions/32437550/whats-the-difference-between-instant-and-localdatetime)
 - [https://d2.naver.com/helloworld/645609](https://d2.naver.com/helloworld/645609)
-- [https://umbum.dev/922](https://umbum.dev/922)

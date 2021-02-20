@@ -5,7 +5,6 @@ categories:
     - Algorithm
 tags:
     - Back Tracking
-    - Theory
 ---
 
 ## 백트래킹
