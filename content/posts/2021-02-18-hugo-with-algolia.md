@@ -36,7 +36,7 @@ Algolia 가입 및 Hugo 블로그 구축에 관한 기본적인 내용은 생략
 
 #### config.toml 파일 설정
 
-우선 config.toml 파일에 아래의 설정을 추가한다.
+우선 `config.toml` 파일에 아래의 설정을 추가한다.
 
 ```toml
 [outputFormats.Algolia]
