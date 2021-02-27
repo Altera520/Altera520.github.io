@@ -98,7 +98,9 @@ ZoneOffset과 ZoneRegion을 보면 차이가 없어보인다. 하지만, API를 
 <details>
     <summary>Instant 사용예시</summary>
 
-#### 현재 시간의 타임스탬프 값 구하기
+{{% h4 %}}
+현재 시간의 타임스탬프 값 구하기
+{{% /h4 %}}
 
 ```java
 Instant current = Instant.now();
@@ -106,7 +108,9 @@ long epochSecond = current.getEpochSecond();
 long epochMilli = current.toEpochMilli();
 ```
 
-#### Instant to ZonedDateTime/ ZonedDateTime to Instant
+{{% h4 %}}
+Instant to ZonedDateTime/ ZonedDateTime to Instant
+{{% /h4 %}}
 
 ```java
 // Instant to ZonedDateTime
@@ -118,7 +122,9 @@ ZonedDateTime krTime = ZonedDateTime.of(2020, 8, 18, 6, 57, 38, ZoneId.of("Asia/
 Instant instant = krTime.toInstant();
 ```
 
-#### Instant to LocaldDateTime/ LocalDateTime to Instant
+{{% h4 %}}
+Instant to LocaldDateTime/ LocalDateTime to Instant
+{{% /h4 %}}
 
 ```java
 // Instant to LocalDateTime
@@ -130,7 +136,9 @@ LocalDateTime localDateTime = LocalDateTime.of(2020, 8, 18, 6, 57, 38);
 Instant instant = localDateTime.toInstant(ZoneOffset.UTC);
 ```
 
-### 기타 유용한 메서드들
+{{% h4 %}}
+기타 유용한 메서드들
+{{% /h4 %}}
 
 Instant는 초 또는 밀리초 단위로 시간을 더하거나 빼는 메서드 및 비교하는 메서드 등을 제공
 
@@ -152,7 +160,9 @@ instant.isAfter(Instant.now());
 
 자바8에서 추가된 time 패키지 내에는 기간을 표현하기 위한 `Duration`과 `Period`가 존재한다.
 
-#### Duration (시간 기반)
+{{% h4 %}}
+Duration (시간 기반)
+{{% /h4 %}}
 
 `Duration`은 **두 시간 사이의 간격을 초나 나노초 단위**로 나타내기 위해 사용한다.
 
@@ -172,7 +182,9 @@ long nano = d.getNano();
 
 <br/>
 
-#### Period (날짜 기반)
+{{% h4 %}}
+Period (날짜 기반)
+{{% /h4 %}}
 
 `Period`는 **두 날짜 사이의간격을 년, 월, 일 단위**로 나타내기 위해 사용한다.
 
@@ -193,7 +205,9 @@ int day = p.getDays();
 
 <br/>
 
-#### ChronoUnit
+{{% h4 %}}
+ChronoUnit
+{{% /h4 %}}
 
 `ChronoUnit`을 사용하면 `Duration` 또는 `Period` 객체 생성 없이 날짜 및 시간의 간격을 표현할 수 있다.
 

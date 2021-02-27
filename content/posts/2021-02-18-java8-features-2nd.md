@@ -52,27 +52,39 @@ tags:
 
 ### 스트림 생성
 
-#### 1. 배열 스트림
+{{% h4 %}}
+1. 배열 스트림
+{{% /h4 %}}
+
 `Arrays.stream` 메서드를 사용하여 생성한다.
 ```java
 String[] arr = new String[]{"1", "2", "3"}
 Stream<String> stream = Arrays.stream(arr);
 ```
 
-#### 2. 컬렉션 스트림
+{{% h4 %}}
+2. 컬렉션 스트림
+{{% /h4 %}}
+
 컬렉션의 경우 인터페이스에 추가된 `stream` 메서드를 사용하여 생성한다.
 ```java
 List<String> list = Arrays.asList("1", "2", "3");
 Stream<String> stream = list.stream();
 ```
 
-#### 3. 비어있는 스트림
+{{% h4 %}}
+3. 비어있는 스트림
+{{% /h4 %}}
+
 `Stream`의 `empty` 메서드를 사용하여 빈 스트림을 생성할 수 있다.
 ```java
 Stream<String> stream = Stream.<String>empty();
 ```
 
-#### 4. builder 메서드 사용
+{{% h4 %}}
+4. builder 메서드 사용
+{{% /h4 %}}
+
 `Stream`의 `builder` 메서드를 사용하여 스트림을 직접적으로 생성할 수 있다.
 ```java
 Stream<String> stream = 
@@ -82,7 +94,10 @@ Stream<String> stream =
         .build();
 ```
 
-#### 5. generate 메서드 사용
+{{% h4 %}}
+5. generate 메서드 사용
+{{% /h4 %}}
+
 `Stream`의 `generate` 메서드를 사용하여 `Supplier` 타입의 인자로 스트림을 생성 가능하다.      
 이 경우 생성되는 스트림의 크기가 정해져 있지 않기에 `limit`로 스트림 사이즈를 지정해야한다.
 ```java
@@ -91,7 +106,10 @@ Stream<String> stream =
         .limit(10);
 ```
 
-#### 6. 기본 타입 스트림
+{{% h4 %}}
+6. 기본 타입 스트림
+{{% /h4 %}}
+
 `Stream<Integer>`와 같이 제네릭을 사용하여 스트림을 생성할 수 있으나 기본타입의 스트림을 생성하는 경우 오토박싱이 발생한다. 오토박싱을 발생안하게 하려면 제네릭 타입의 스트림 사용 대신 `IntStream`, `LongStream`, `DoubleStream`을 사용하여 기본형 스트림을 생성 가능하다.     
 ```java
 IntStream intStream = IntStream.range(1, 5); // [1, 2, 3, 4]
@@ -100,13 +118,19 @@ LongStream longStream = LongStream.rangeClosed(1, 5); // [1, 2, 3, 4, 5]
 - `range`: 두번째 인자 값 이전까지 스트림을 생성한다.
 - `rangeClosed`: 두번째 인자 값까지 스트림을 생성한다.
 
-#### 7. 문자열 스트림
+{{% h4 %}}
+7. 문자열 스트림
+{{% /h4 %}}
+
 문자열의 `chars` 메서드를 통해 `IntStream`을 생성할 수 있다.
 ```java
 IntStream intStream = "abcdefg".chars();
 ```
 
-#### 8. 파일 스트림
+{{% h4 %}}
+8. 파일 스트림
+{{% /h4 %}}
+
 `Files` 클래스의 `lines` 메서드를 통해 파일의 각 라인을 문자열 타입의 스트림으로 생성할 수 있다.
 ```java
 Stream<String> fileStream = 
@@ -114,7 +138,10 @@ Stream<String> fileStream =
               Charset.forName("UTF-8"));
 ```
 
-#### 9. 병렬 스트림
+{{% h4 %}}
+9. 병렬 스트림
+{{% /h4 %}}
+
 ```java
 Stream<String> streamOfList = list.parallelStream(); // 병렬 스트림 생성
 Stream<String> streamOfArray = Arrays.stream(arr).parallel(); // 배열을 통한 병렬 스트림
@@ -123,7 +150,10 @@ streamOfList.isParallel() // 병렬 스트림 여부 확인
 streamOfList.sequential(); // 시퀀셜 모드로 돌리기 위해 사용
 ```
 
-#### 10. 스트림 연결
+{{% h4 %}}
+10. 스트림 연결
+{{% /h4 %}}
+
 `Stream`의 `concat` 메서드를 사용하여 스트림을 연결하여 새로운 스트림을 생성할 수 있다.
 ```java
 IntStream stream1 = IntStream.range(1, 5);

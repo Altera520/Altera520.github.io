@@ -105,14 +105,30 @@ pre{
     }
 }
 
-h4 {
-    font-size: 17px !important;
+.subject4 {
+    display: block;
+    margin-block-start: 1.33em;
+    margin-block-end: 1.33em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    //font-size: 17px !important;
+    font-weight: bolder;
+    font-size: 18px;
     margin-bottom: 10px !important;
+    margin: 1.2rem 0;
 }
 
-h5 {
-    font-size: 16px !important;
-    margin-bottom: 5px !important;
+.subject5 {
+    display: block;
+    margin-block-start: 1.33em;
+    margin-block-end: 1.33em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    //font-size: 17px !important;
+    font-weight: bolder;
+    font-size: 16px;
+    margin-bottom: 10px !important;
+    margin: 1.2rem 0;
 }
 
 [theme=dark] .single .content>h4>.header-mark::before, [theme=dark] .single .content>h5>.header-mark::before, [theme=dark] .single .content>h6>.header-mark::before {

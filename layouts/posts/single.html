@@ -14,8 +14,7 @@
     {{- if ne $toc.enable false -}}
         <div class="toc" id="toc-auto">
             <h2 class="toc-title">
-                <i class="fas fa-book"></i>
-                {{ "index" }}
+                <i class="fas fa-book"></i><span> {{ "index" }}</span>
             </h2>
             <div class="toc-content{{ if eq $toc.auto false }} always-active{{ end }}" id="toc-content-auto"></div>
         </div>
