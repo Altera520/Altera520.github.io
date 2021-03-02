@@ -63,6 +63,17 @@ JSP 파일이 서블릿 파일로 변환되고, 서블릿 파일이 클라이언
 contentType에 설정된 타입으로 인코딩하여 데이터를 전송하면서 http 헤더에 contentType을 명시해주는데 브라우저는 헤더의 contentType에 설정된 타입으로 디코딩하여 브라우저에 출력한다.
 > contentType에 인코딩 타입이 지정되어있으면 &lt;html&gt;태그 내의 &lt;meta&gt;태그에 지정된 인코딩 타입은 무시된다.
 
+위의 방법 대신 자바 코드 상에서 contentType을 설정해주고자 한다면, `HttpServletResponse` 객체를 반환하는 부분에서 `setContentType`메서드를 사용하면 된다. `setContentType`메서드를 통한 설정은 응답 객체에 대한 출력 스트림을 열기전에 적용되어야함을 유념한다.
+```java
+//contentType 설정
+response.setContentType("text/html;charset=UTF-8");
+
+//응답에 대한 출력 스트림
+response.getWriter()
+    .print("<h2>테스트</h2>");
+    .close();
+```
+
 <br/>
 
 #### 인코딩 설정 순위
@@ -85,9 +96,9 @@ contentType에 설정된 타입으로 인코딩하여 데이터를 전송하면�
 <br/>
 
 디폴트 인코딩 타입이 UTF-8로 되어있지않다면 디코딩 시 한글이 깨지므로 서블릿 코드 상에서 별도의 처리를 진행해야한다.        
-아래의 코드를 서블릿의 request 객체를 받아오는 메서드내에 포함하면되나 DRY 원칙을 위배하므로 필터에 적용해주도록한다.
+아래의 코드를 서블릿의 `HttpServletRequest` 객체를 받아오는 메서드내에 포함하면되나 DRY 원칙을 위배하므로 필터에 적용해주도록한다.
 ```java
-request.setCharacterEncoding("UTF-8")
+request.setCharacterEncoding("UTF-8");
 ```
 
 <br/>

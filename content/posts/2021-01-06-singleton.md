@@ -217,7 +217,7 @@ public class ConfigurationBeanFactory {
 
 Java와 스프링에서 싱글턴 객체의 라이프사이클이 다르다. 자바는 클래스 로더 기준이며, 스프링에서는 ApplicationContext가 기준이다.
 - **클래스 로더 기준**이라는 것은 톰캣이 WAR 파일을 만들게 되면, WAR 파일 하나 당 클래스 로더가 1:1 관계로 배치가된다. 다른 WAR 파일은 참조가 불가능하다.
-- **ApplicationContext 기준**이라는 것은 web.xml 에서 root context 하나와 servlet cotnext 여러개를 등록할 수 있다. 이 때 각각의 context 들이 싱글턴 범위가 된다.
+- **ApplicationContext 기준**이라는 것은 web.xml 에서 root context 하나와 servlet context 여러개를 등록할 수 있다. 이 때 각각의 context 들이 싱글턴 범위가 된다.
     > root context와 servlet context 설명은 [스프링의 컨텍스트](/posts/2021-01-09-spring_context/)참조
 
 <br/>
