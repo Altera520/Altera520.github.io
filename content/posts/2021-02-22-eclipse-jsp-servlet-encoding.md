@@ -49,14 +49,18 @@ tags:
 
 <br/>
 
-#### pageEncoding (JSP 파일 저장관련)
+{{% h4 %}}
+pageEncoding (JSP 파일 저장관련)
+{{% /h4 %}}
 
 pageEncoding 타입은 어떠한 타입으로 인코딩해서 저장할지, 어떠한 타입으로 디코딩해서 출력할지를 저장해주는 설정이다.
 pageEncoding 설정이 누락되었다면 JSP 파일에서 서블릿 파일로 변환될때 한글문자가 깨지게됨을 유의한다.
 
 <br/>
 
-#### contentType (클라이언트 전송 관련)
+{{% h4 %}}
+contentType (클라이언트 전송 관련)
+{{% /h4 %}}
 
 JSP 파일이 서블릿 파일로 변환되고, 서블릿 파일이 클라이언트(브라우저)에게 html을 전송해줄 것이다.       
 전송해줄 때, html 내부의 문자열들을 인코딩하는 타입을 지정해주는 부분이 contentType이다.        
@@ -76,7 +80,10 @@ response.getWriter()
 
 <br/>
 
-#### 인코딩 설정 순위
+{{% h4 %}}
+인코딩 설정 순위
+{{% /h4 %}}
+
 | target | description |
 |:-------|:------------|
 | IDE/ Tomcat | <ol><li>pageEncoding</li><li>contentType의 charset 참조 (pageEncoding이 없는 경우)</li><li>시스템 디폴트 설정 참조 (charset 없는 경우)</li></ol> |
@@ -87,7 +94,9 @@ response.getWriter()
 
 ### 서블릿의 인코딩
 
-#### POST request에 대한 인코딩 타입
+{{% h4 %}}
+POST request에 대한 인코딩 타입
+{{% /h4 %}}
 
 클라이언트에서 POST로 데이터를 request하는 경우 아래의 순으로 실행된다.
 1. 클라이언트에서 서버로 데이터를 보내는 경우에는 `contentType`에 지정했던 타입으로 인코딩하여 전송한다.
@@ -103,12 +112,14 @@ request.setCharacterEncoding("UTF-8");
 
 <br/>
 
-#### GET request에 대한 인코딩 타입
+{{% h4 %}}
+GET request에 대한 인코딩 타입
+{{% /h4 %}}
 
 클라이언트에서 GET으로 데이터를 넘기는 경우 요청 데이터가 URL뒤에 붙어 전송된다.
 URI 디폴트 인코딩 방식이 UTF-8로 구성되어있지 않은 경우 한글이 깨지는데 아래의 방법으로 인코딩을 설정할 수 있다.
 
-##### 1. request.setCharacterEncoding 메서드를 사용하도록 설정
+{{% h5 %}}1. request.setCharacterEncoding 메서드를 사용하도록 설정{{% /h5 %}}
 
 `server.xml` 파일의 &lt;Connector&gt;태그(현재 사용하고 있는 포트가 지정된 태그) 내에 `useBodyEncodingForURI`를 true로 설정한다. 이렇게 설정하면 POST 객체 처럼 다룰 수 있다.
 
@@ -117,7 +128,7 @@ URI 디폴트 인코딩 방식이 UTF-8로 구성되어있지 않은 경우 한�
  port="80" protocol="HTTP/1.1" redirectPort="8443" />
 ```
 
-##### 2. URI 인코딩 타입을 고정
+{{% h5 %}}2. URI 인코딩 타입을 고정{{% /h5 %}}
 
 `server.xml` 파일의 &lt;Connector&gt;태그(현재 사용하고 있는 포트가 지정된 태그) 내에 `URIEncoding`을 UTF-8로 설정한다. 이렇게 설정하면 모든 URI에 대한 인코딩을 설정한 타입으로 강제하게 된다.
 
