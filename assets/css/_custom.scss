@@ -145,6 +145,13 @@ sup {
     font-weight: 700;
 }
 
+.content  img {
+    display: block;
+    margin: 1.0rem auto;
+    max-width: 100%;
+    height: auto;
+}
+
 @import 'toc';
 @import 'post';
 @import 'post_nav';
