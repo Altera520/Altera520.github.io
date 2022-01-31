@@ -1,45 +1,22 @@
 {{- /* Desktop header */ -}}
 <header class="desktop" id="header-desktop">
     <div class="header-wrapper">
-        <div class="header-title">
-            <img src="/images/shiba.png" class="img-profile" alt="main" width="35" height="35"/>
-            <a href="{{ .Site.Home.RelPermalink }}" title="{{ .Site.Title }}">
-                {{- with .Site.Params.header.title -}}
-                    {{- with .logo -}}
-                        {{- dict "Src" . "Class" "logo" | partial "plugin/image.html" -}}
-                    {{- end -}}
-                    {{- with .pre -}}
-                        <span class="header-title-pre">{{ . | safeHTML }}</span>
-                    {{- end -}}
-                    {{- if .typeit -}}
-                        {{- $id := dict "Content" .name "Scratch" $.Scratch | partial "function/id.html" -}}
-                        <span id="{{ $id }}" class="typeit"></span>
-                        {{- dict $id (slice $id) | dict "typeitMap" | merge ($.Scratch.Get "this") | $.Scratch.Set "this" -}}
-                    {{- else -}}
-                        {{- .name -}}
-                    {{- end -}}
-                    {{- with .post -}}
-                        <span class="header-title-post">{{ . | safeHTML }}</span>
-                    {{- end -}}
-                {{- else -}}
-                    {{- .Site.Title -}}
+        <div class="menu">
+          <div class="menu-inner">
+            {{- range .Site.Menus.main -}}
+                {{- $url := .URL | relLangURL -}}
+                {{- with .Page -}}
+                    {{- $url = .RelPermalink -}}
                 {{- end -}}
-            </a>
+                <a class="menu-item{{ if $.IsMenuCurrent `main` . | or ($.HasMenuCurrent `main` .) | or (eq $.RelPermalink $url) }} active{{ end }}" href="{{ $url }}"{{ with .Title }} title="{{ . }}"{{ end }}{{ if (urls.Parse $url).Host }} rel="noopener noreffer" target="_blank"{{ end }}>
+                    {{- .Pre | safeHTML }} {{ .Name }} {{ .Post | safeHTML -}}
+                </a>
+            {{- end -}}
+          </div>
         </div>
         <div class="menu">
             <div class="menu-inner">
-                {{- range .Site.Menus.main -}}
-                    {{- $url := .URL | relLangURL -}}
-                    {{- with .Page -}}
-                        {{- $url = .RelPermalink -}}
-                    {{- end -}}
-                    <a class="menu-item{{ if $.IsMenuCurrent `main` . | or ($.HasMenuCurrent `main` .) | or (eq $.RelPermalink $url) }} active{{ end }}" href="{{ $url }}"{{ with .Title }} title="{{ . }}"{{ end }}{{ if (urls.Parse $url).Host }} rel="noopener noreffer" target="_blank"{{ end }}>
-                        {{- .Pre | safeHTML }} {{ .Name }} {{ .Post | safeHTML -}}
-                    </a>
-                {{- end -}}
-                {{- if .Site.Menus.main -}}
-                    <span class="menu-item delimiter"></span>
-                {{- end -}}
+                
                 {{- if .Site.IsMultiLingual -}}
                     <a href="javascript:void(0);" class="menu-item language" title="{{ T "selectLanguage" }}">
                         {{- .Language.LanguageName -}}
@@ -77,9 +54,9 @@
                         </span>
                     </span>
                 {{- end -}}
-                <a href="javascript:void(0);" class="menu-item theme-switch" title="{{ T "switchTheme" }}">
+                <!-- <a href="javascript:void(0);" class="menu-item theme-switch" title="{{ T "switchTheme" }}">
                     <i class="fas fa-adjust fa-fw"></i>
-                </a>
+                </a> -->
             </div>
         </div>
     </div>
@@ -90,7 +67,6 @@
     <div class="header-container">
         <div class="header-wrapper">
             <div class="header-title">
-                <img src="/images/shiba.png" class="img-profile" alt="main" width="35" height="35"/>
                 <a href="{{ .Site.Home.RelPermalink }}" title="{{ .Site.Title }}">
                     {{- with .Site.Params.header.title -}}
                         {{- with .logo -}}
@@ -148,9 +124,9 @@
                     {{- .Pre | safeHTML }}{{ .Name }}{{ .Post | safeHTML -}}
                 </a>
             {{- end -}}
-            <a href="javascript:void(0);" class="menu-item theme-switch" title="{{ T "switchTheme" }}">
+            <!-- <a href="javascript:void(0);" class="menu-item theme-switch" title="{{ T "switchTheme" }}">
                 <i class="fas fa-adjust fa-fw"></i>
-            </a>
+            </a> -->
             {{- if .Site.IsMultiLingual -}}
                 <a href="javascript:void(0);" class="menu-item" title="{{ T "selectLanguage" }}">
                     {{- .Language.LanguageName -}}
@@ -183,6 +159,3 @@
 <div class="search-dropdown mobile">
     <div id="search-dropdown-mobile"></div>
 </div>
-
-{{- /* Mathjax */ -}}
-{{ partial "head/math.html" . }}

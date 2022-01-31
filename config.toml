@@ -3,7 +3,7 @@ baseURL = "https://altera520.github.io/"
 defaultContentLanguage = "en"
 # language code
 languageCode = "en"
-title = "Juneee blog"
+title = "altera520 Blog"
 
 # Change the default theme to be use when building the site with Hugo
 theme = "LoveIt"
@@ -33,9 +33,9 @@ summaryLength=50
         [params.home.profile]
             enable = true
             # URL of avatar shown in home page
-            avatarURL = "/images/profile.jpg"
+            avatarURL = "/images/siba.png"
             # LoveIt CHANGED | 0.2.7 title shown in home page (HTML format is supported)
-            title = ""
+            title = "altera520"
             # subtitle shown in home page
             subtitle = "Do not stay. Always look"
             # whether to use typeit animation for subtitle
@@ -47,7 +47,7 @@ summaryLength=50
         [params.home.posts]
             enable = true
             # special amount of posts in each home posts page
-            paginate = 6
+            paginate = 8
             # LoveIt DELETED | 0.2.0 replaced with hiddenFromHomePage in params.page
             # default behavior when you don't set "hiddenFromHomePage" in front matter
             defaultHiddenFromHomePage = false
@@ -137,6 +137,17 @@ summaryLength=50
     #link = ""
 
 [menu]
+    [[menu.main]]
+        identifier = "Blog"
+        # you can add extra information before the name (HTML format is supported), such as icons
+        pre = ""
+        # you can add extra information after the name (HTML format is supported), such as icons
+        post = ""
+        name = "Blog"
+        url = "/"
+        # title will be shown when you hover on this menu link
+        title = ""
+        weight = 1
     [[menu.main]]
         identifier = "posts"
         # you can add extra information before the name (HTML format is supported), such as icons
