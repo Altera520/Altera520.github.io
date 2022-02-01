@@ -78,17 +78,15 @@
 
     {{- /* Static TOC */ -}}
     {{- if ne $toc.enable false -}}
-      <div class="details toc" id="toc-static" kept="{{ if $toc.keepStatic }}true{{ end }}">
-        <div class="details-summary toc-title">
+        <div class="details toc" id="toc-static"  kept="{{ if $toc.keepStatic }}true{{ end }}">
+            <div class="details-summary toc-title">
+            </div>
+            <div class="details-content toc-content" id="toc-content-static">
+                {{- dict "Content" .TableOfContents "Ruby" $params.ruby "Fraction" $params.fraction "Fontawesome" $params.fontawesome | partial "function/content.html" | safeHTML -}}
+            </div>
         </div>
-        <div class="details-content toc-content" id="toc-content-static">
-          {{- dict "Content" .TableOfContents "Ruby" $params.ruby "Fraction" $params.fraction "Fontawesome"
-          $params.fontawesome | partial "function/content.html" | safeHTML -}}
-        </div>
-      </div>
     {{- end -}}
-    {{- dict "Content" .Content "Ruby" $params.ruby "Fraction" $params.fraction "Fontawesome" $params.fontawesome |
-    partial "function/content.html" | safeHTML -}}
+    {{- dict "Content" .Content "Ruby" $params.ruby "Fraction" $params.fraction "Fontawesome" $params.fontawesome | partial "function/content.html" | safeHTML -}}
   </div>
 
   {{- /* Footer */ -}}
