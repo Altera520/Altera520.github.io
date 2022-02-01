@@ -4,8 +4,29 @@
   background: no-repeat center center;
   background-attachment: scroll;
   background-size: cover;
-  background-color: #a3a3a3;
+  //background-color: #a3a3a3;
+  background-color: #fff;
   margin-top: 4rem;
-  background-image: url('https://images.unsplash.com/photo-1532581140115-3e355d1ed1de?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80');
-  min-height: 310px;
+  background-image: url('/images/default_featured_img.jpg');
+  min-height: 300px;
+  width: 100%;
+  position: relative;
+}
+
+.post-blur {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #000;
+  opacity: .5;
+}
+
+.intro-header-title {
+  position: relative;
+  display: block;
+  //min-height: 310px;
+  padding: 50px 0;
+  //min-height: 310px;
 }

@@ -19,11 +19,31 @@
 }
 
 #custom-category {
+  //font-family: "Source Sans Pro",sans-serif;
+  display: inline-block;
+  width: auto;
+  height: 22px;
+  padding: 0 8px;
+  font-size: 14px;
+  color: #a6abb2;
+  font-family: -apple-system,Verdana,"PingFang SC","Helvetica Neue",Arial,"Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
+  line-height: 22px;
+  box-sizing: border-box;
+  box-shadow: 0 0 .6px #d5dae1;
+  border-radius: 2px;
+  background-color: #fafafa;
+  cursor: pointer;
+  margin-right: 2px;
+  transition: .2s;
+  color: #fff;
+  background-color: rgba(255,255,255,.26);
+  box-shadow: none;
+  margin-bottom: 0px;
+}
+
+#custom-summary-category {
   font-family: "Source Sans Pro",sans-serif;
-  font-weight: 750;
-  font-size: .9rem;
-  color: #5094FA;
-  text-decoration: none;
+  font-weight: bold;
 }
 
 [theme=dark] #custom-category {
@@ -183,6 +203,6 @@ sup {
 }
 
 //@import 'toc';
-@import 'custom/post_header.scss';
+@import 'custom/post_header';
 @import 'post';
 @import 'post_nav';

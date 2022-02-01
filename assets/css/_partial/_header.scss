@@ -2,7 +2,7 @@ header {
   width: 100%;
   z-index: 150;
   background-color: $header-background-color;
-  padding:0 0 1.4rem 0;
+  //padding:0 0 1.4rem 0;
   @include transition(box-shadow 0.3s ease);
 
   [theme=dark] & {
@@ -37,7 +37,7 @@ header {
   max-width: 800px;
   margin: 0 auto;
   font-size: 18px;
-  padding: 0.7rem 0;
+  padding: 0.3rem 0 0 0;
 }
 
 .header-title {
@@ -153,7 +153,7 @@ header {
 #header-desktop {
   display: block;
   position: fixed;
-  height: $header-height;
+  height: 3.8rem;
   line-height: $header-height;
 
   [header-desktop=normal] & {

@@ -21,7 +21,7 @@
         //content: "|";
         font-weight: bold;
         margin-right: .5rem;
-        color: #5094FA;
+        color: #0085a1;
 
         [theme=dark] & {
           color: $single-link-color-dark;
@@ -53,10 +53,11 @@
 
 #toc-auto {
   display: block;
-  position: fixed !important;
+  position: absolute;
   width: $MAX_LENGTH;
   max-width: 0;
   padding: 0 .8rem;
+  //border-left: 4px solid $global-border-color;
   @include overflow-wrap(break-word);
   box-sizing: border-box;
   top: 10rem;
@@ -98,7 +99,7 @@
 
     a.active {
       font-weight: bold;
-      color: #5094FA;
+      color: #0085a1;
 
       [theme=dark] & {
         color: $single-link-color-dark;

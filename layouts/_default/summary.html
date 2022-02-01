@@ -7,7 +7,7 @@
         {{- $categories := slice -}}
         {{- range .Params.categories -}}
             {{- $category := partialCached "function/path.html" . . | printf "/categories/%v" | $.Site.GetPage -}}
-            {{- $categories = $categories | append (printf `<a href="%v" id="custom-category">%v</a>` $category.RelPermalink $category.Title) -}}
+            {{- $categories = $categories | append (printf `<a href="%v" id="custom-summary-category">%v</a>` $category.RelPermalink $category.Title) -}}
         {{- end -}}
         {{- with delimit $categories "&nbsp;" -}}
           {{ . }}
