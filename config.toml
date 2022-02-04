@@ -1,4 +1,4 @@
-baseurl = "https://github.com/Altera520"
+baseurl = "https://altera520.github.io"
 title = "Jun Blog"
 theme = "hugo-theme-cleanwhite"
 languageCode = "en-us"
