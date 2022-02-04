@@ -1,0 +1,171 @@
+<!doctype html><html lang=en-us><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><meta property="og:site_name" content="Jun Blog"><meta property="og:type" content="article"><meta property="og:image" content="https://zhaohuabing.com/img/ma.png"><meta property="twitter:image" content="https://zhaohuabing.com/img/ma.png"><meta name=title content="[백준] 8972. 미친 아두이노"><meta property="og:title" content="[백준] 8972. 미친 아두이노"><meta property="twitter:title" content="[백준] 8972. 미친 아두이노"><meta name=description content><meta property="og:description" content><meta property="twitter:description" content><meta property="twitter:card" content="summary"><meta name=keyword content><link rel="shortcut icon" href=/img/favicon.ico><title>[백준] 8972. 미친 아두이노</title><link rel=canonical href=/post/2020-12-28-b_8972/><link rel=stylesheet href=/css/iDisqus.min.css><link rel=stylesheet href=/css/bootstrap.min.css><link rel=stylesheet href=/css/hugo-theme-cleanwhite.min.css><link rel=stylesheet href=/css/zanshang.css><link href=//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css rel=stylesheet type=text/css><link rel=stylesheet href=https://zhaohuabing.com/css/gj.css><link rel=preconnect href=https://fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link href="https://fonts.googleapis.com/css2?family=Nothing+You+Could+Do&display=swap" rel=stylesheet><script src=/js/jquery.min.js></script><script src=/js/bootstrap.min.js></script><script src=/js/hux-blog.min.js></script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css><script defer src=https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js></script><script defer src=https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js onload=renderMathInElement(document.body);></script><script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}]});});</script></head><nav class="navbar navbar-default navbar-custom navbar-fixed-top"><div class=container-fluid><div class="navbar-header page-scroll"><button type=button class=navbar-toggle>
+<span class=sr-only>Toggle navigation</span>
+<span class=icon-bar></span><span class=icon-bar></span><span class=icon-bar></span></button>
+<a id=custom-navbar-brand style=color:#fff class=navbar-brand href=/>Jun Blog</a></div><div id=huxblog_navbar><div class=navbar-collapse><ul class="nav navbar-nav navbar-right"><li><a href=/>Home</a></li><li><a href=/top/archive/>Archive</a></li><li><a href=/top/tags/>Tags</a></li><li><a href=/search><i class="fa fa-search"></i></a></li></ul></div></div></div></nav><script>var $body=document.body;var $toggle=document.querySelector('.navbar-toggle');var $navbar=document.querySelector('#huxblog_navbar');var $collapse=document.querySelector('.navbar-collapse');$toggle.addEventListener('click',handleMagic)
+function handleMagic(e){if($navbar.className.indexOf('in')>0){$navbar.className=" ";setTimeout(function(){if($navbar.className.indexOf('in')<0){$collapse.style.height="0px"}},400)}else{$collapse.style.height="auto"
+$navbar.className+=" in";}}</script><style type=text/css>header.intro-header{background-image:url(/img/ma.png)}</style><header class=intro-header><div class=blur><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><div class=post-heading><div class=tags><a class=tag href=/tags/%EB%B0%B1%EC%A4%80 title=백준>백준</a></div><h1>[백준] 8972. 미친 아두이노</h1><h2 class=subheading></h2><span class=meta>Posted by
+Jun Blog
+on
+Monday, December 28, 2020</span></div></div></div></div></div></header><article><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2
+col-md-10 col-md-offset-1
+post-container"><h2 id=문제-설명>문제 설명</h2><p><strong>문제</strong> : <a href=https://www.acmicpc.net/problem/8972>백준 8972번 - 미친 아두이노</a></p><p>SWEA에 나올법한 <strong>구현</strong> 문제이다.</p><p>아래의 과정을 통해서 시뮬레이션한 결과를 출력하며, 미친 아두이노와 플레이어(종수)의 아두이노가 동일한 좌표에 위치하면 시뮬레이션을 종료시키고 &ldquo;kraj X"라는 문자열을 출력한다. (<strong>X</strong>는 시뮬레이션이 종료된 단계)</p><ol><li>먼저, 종수가 아두이노를 8가지 방향(수직,수평,대각선)으로 이동시키거나, 그 위치에 그대로 놔둔다.</li><li>종수의 아두이노가 미친 아두이노가 있는 칸으로 이동한 경우에는 게임이 끝나게 되며, 종수는 게임을 지게 된다.</li><li>미친 아두이노는 8가지 방향 중에서 종수의 아두이노와 가장 가까워 지는 방향으로 한 칸 이동한다. 즉, 종수의 위치를 $(r1,s1)$, 미친 아두이노의 위치를 $(r2, s2)$라고 했을 때, $|r1-r2| + |s1-s2|$가 가장 작아지는 방향으로 이동한다.</li><li>미친 아두이노가 종수의 아두이노가 있는 칸으로 이동한 경우에는 게임이 끝나게 되고, 종수는 게임을 지게 된다.</li><li>2개 또는 그 이상의 미친 아두이노가 같은 칸에 있는 경우에는 큰 폭발이 일어나고, 그 칸에 있는 아두이노는 모두 파괴된다.<br></li></ol><h2 id=solution>Solution</h2><p>이 문제의 핵심은 <strong>2개또는 그 이상의 미친 아두이노 존재시 파괴</strong>라는 점이다.<br>이 부분을 염두에 두고 시뮬레이션 코드를 작성해야하는데 본인은 이를 간과하고 알고리즘을 설계했다가 낭패를 봤다.</p><p>미친 아두이노가 이동하는 좌표에 다른 미친 아두이노가 존재할때 파괴를 시키면 다음과 같은 경우에서 올바른 결과를 보장하지 못한다.</p><ul><li><strong>이동 시 미친 아두이노가 존재하면 파괴 (잘못된 경우)</strong><ol><li><p>$(3,3)$에서 $(3,2)$로 이동</p><p><img src=/img/2020-12-28-b_8972/step1-1.png alt></p></li><li><p>$(2,2)$에서 $(3,2)$로 이동</p><p><img src=/img/2020-12-28-b_8972/step1-2.png alt></p></li></ol></li></ul><p>따라서, 모든 미친 아두이노가 이동 후에 좌표가 겹치는지 여부를 검사한 후 겹친다면 폭팔을 수행해야한다.</p><ul><li><strong>올바른 경우</strong><ol><li><p>$(3,3)$에서 $(3,2)$로 이동</p><p><img src=/img/2020-12-28-b_8972/step2-1.png alt></p></li><li><p>$(2,2)$에서 $(3,2)$로 이동</p><p><img src=/img/2020-12-28-b_8972/step2-2.png alt></p></li><li><p>$(3,2)$에서 $(4,1)$로 이동</p><p><img src=/img/2020-12-28-b_8972/step2-3.png alt></p></li><li><p>모든 아두이노 이동 후 겹치는좌표 폭팔</p><p><img src=/img/2020-12-28-b_8972/step2-4.png alt></p></li></ol></li></ul><h3 id=수행단계>수행단계</h3><ol><li><strong>종수를 이동시킨다.</strong><ol><li>이동시키고자 하는 위치에 미친 아두이노가 존재하면 return</li><li><strong>'.'</strong> 이라면 종수의 위치 갱신 및 map 갱신(새로운 좌표에 <strong>&lsquo;I&rsquo;</strong> 할당, 기존 좌표에 <strong>'.'</strong> 할당)</li></ol></li><li><strong>미친 아두이노를 이동시킨다.</strong><ol><li>8가지 방향 중 $| r1 - r2 | + | s1 - s2 |$가 최소인 방향을 설정한다. (범위를 벗어나는 좌표라면 continue)</li><li>이동시키고자 하는 위치에 종수가 존재하면 return</li><li>미친 아두이노의 위치만 갱신</li></ol></li><li><strong>미친 아두이노들이 이동한 좌표에서 충돌여부를 검사한다.</strong><ol><li>충돌이 발생한 미친 아두이노들은 리스트에서 제거</li><li>충돌이 발생하지 않은 미친 아두이노들의 위치 값을 통해 map 갱신(새로운 좌표에 <strong>&lsquo;R&rsquo;</strong> 할당, 기존 좌표에 <strong>'.'</strong> 할당)</li></ol></li><li><strong>1번부터 재반복한다.</strong></li></ol><h2 id=code>Code</h2><p>코드를 다 작성하고 제출하니 시간초과 판정을 받았다. <del>ㅂㄷㅂㄷ&mldr;</del><br>기존 코드에서는 위 수행단계 3의 과정을위해 아래의 코드로 작성하였는데, 이 경우 각각의 미친 아두이노가 나머지 모든 미친 아두이노와 값을 비교하기 때문에 $O(N^2)$이 소요된다.</p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=color:#998;font-style:italic>//R와 충돌 검사 및 폭팔 처리
+</span><span style=color:#998;font-style:italic></span><span style=color:#000;font-weight:700>for</span>(<span style=color:#458;font-weight:700>int</span> i<span style=color:#000;font-weight:700>=</span><span style=color:#099>0</span>; i <span style=color:#000;font-weight:700>&lt;</span> crazy.size(); i<span style=color:#000;font-weight:700>++</span>){
+    <span style=color:#000;font-weight:700>if</span>(check[i]) <span style=color:#000;font-weight:700>continue</span>;
+    <span style=color:#458;font-weight:700>bool</span> bomb <span style=color:#000;font-weight:700>=</span> <span style=color:#0086b3>false</span>;
+    <span style=color:#458;font-weight:700>int</span> ty <span style=color:#000;font-weight:700>=</span> crazy[i].first;
+    <span style=color:#458;font-weight:700>int</span> tx <span style=color:#000;font-weight:700>=</span> crazy[i].second;
+
+    <span style=color:#000;font-weight:700>for</span>(<span style=color:#458;font-weight:700>int</span> j<span style=color:#000;font-weight:700>=</span><span style=color:#099>0</span>; j <span style=color:#000;font-weight:700>&lt;</span> crazy.size(); j<span style=color:#000;font-weight:700>++</span>){
+        <span style=color:#000;font-weight:700>if</span>(i <span style=color:#000;font-weight:700>==</span> j) <span style=color:#000;font-weight:700>continue</span>;
+
+        <span style=color:#458;font-weight:700>int</span> uy <span style=color:#000;font-weight:700>=</span> crazy[j].first;
+        <span style=color:#458;font-weight:700>int</span> ux <span style=color:#000;font-weight:700>=</span> crazy[j].second;
+        <span style=color:#000;font-weight:700>if</span>(ty <span style=color:#000;font-weight:700>==</span> uy <span style=color:#000;font-weight:700>&amp;&amp;</span> tx <span style=color:#000;font-weight:700>==</span> ux){
+            check[j] <span style=color:#000;font-weight:700>=</span> <span style=color:#0086b3>true</span>;
+            bomb <span style=color:#000;font-weight:700>=</span> <span style=color:#0086b3>true</span>;
+        }
+    }
+
+    <span style=color:#000;font-weight:700>if</span>(<span style=color:#000;font-weight:700>!</span>bomb) map[ty][tx] <span style=color:#000;font-weight:700>=</span> CRAZY;
+    <span style=color:#000;font-weight:700>else</span> check[i] <span style=color:#000;font-weight:700>=</span> <span style=color:#0086b3>true</span>;
+}
+</code></pre></div><p>시복잡도를 최소화 시키기 위해 미친 아두이노들의 좌표값들을 정렬해준 후 순회하며 아래의 단계를 수행하는 것으로 변경하였다.</p><ul><li>crazy[i]의 충돌여부 검사시 j는 i 인덱스로 설정</li><li>crazy[i]와 crazy[j+1]이 같지 않을때까지 j인덱스 증가</li><li>i의 인덱스와 j의 인덱스가 같다면 crazy[i]는 충돌이 일어나지 않았으므로 map 갱신 및 새로운 리스트에 삽입</li><li>i와 j의 인덱스가 다르다면 i ~ j-1까지는 충돌이 발생. 다음 비교를 위해서 i는 j 인덱스로 변경</li></ul><p>따라서 시복잡도는 $O(NlogN)$이 되게된다.</p><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=color:#998;font-style:italic>//R와 충돌 검사 및 폭팔 처리
+</span><span style=color:#998;font-style:italic></span>sort(crazy.begin(), crazy.end());
+vector<span style=color:#000;font-weight:700>&lt;</span>pair<span style=color:#000;font-weight:700>&lt;</span><span style=color:#458;font-weight:700>int</span>,<span style=color:#458;font-weight:700>int</span><span style=color:#000;font-weight:700>&gt;&gt;</span> temp;
+<span style=color:#000;font-weight:700>for</span>(<span style=color:#458;font-weight:700>int</span> i<span style=color:#000;font-weight:700>=</span><span style=color:#099>0</span>; i <span style=color:#000;font-weight:700>&lt;</span> crazy.size(); i<span style=color:#000;font-weight:700>++</span>){
+    <span style=color:#458;font-weight:700>int</span> j <span style=color:#000;font-weight:700>=</span> i;
+
+    <span style=color:#998;font-style:italic>//충돌이 발생하는 인덱스는 건너뛰기
+</span><span style=color:#998;font-style:italic></span>    <span style=color:#000;font-weight:700>while</span>(j <span style=color:#000;font-weight:700>&lt;</span> crazy.size() <span style=color:#000;font-weight:700>&amp;&amp;</span> crazy[i] <span style=color:#000;font-weight:700>==</span> crazy[j<span style=color:#000;font-weight:700>+</span><span style=color:#099>1</span>]){ 
+        j<span style=color:#000;font-weight:700>++</span>;
+    }
+    <span style=color:#000;font-weight:700>if</span>(i<span style=color:#000;font-weight:700>==</span>j){ <span style=color:#998;font-style:italic>// 충돌이 발생하지 않은 경우
+</span><span style=color:#998;font-style:italic></span>        <span style=color:#458;font-weight:700>int</span> cy <span style=color:#000;font-weight:700>=</span> crazy[i].first;
+        <span style=color:#458;font-weight:700>int</span> cx <span style=color:#000;font-weight:700>=</span> crazy[i].second;
+        map[cy][cx] <span style=color:#000;font-weight:700>=</span> CRAZY;
+        temp.push_back(crazy[i]);
+    }
+    <span style=color:#000;font-weight:700>else</span> i <span style=color:#000;font-weight:700>=</span> j; <span style=color:#998;font-style:italic>// 인덱스 변경 (건너뛰기)
+</span><span style=color:#998;font-style:italic></span>}
+crazy <span style=color:#000;font-weight:700>=</span> temp;
+</code></pre></div><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=color:#999;font-weight:700;font-style:italic>#include</span> <span style=color:#999;font-weight:700;font-style:italic>&lt;iostream&gt;</span><span style=color:#999;font-weight:700;font-style:italic>
+</span><span style=color:#999;font-weight:700;font-style:italic>#include</span> <span style=color:#999;font-weight:700;font-style:italic>&lt;vector&gt;</span><span style=color:#999;font-weight:700;font-style:italic>
+</span><span style=color:#999;font-weight:700;font-style:italic>#include</span> <span style=color:#999;font-weight:700;font-style:italic>&lt;string&gt;</span><span style=color:#999;font-weight:700;font-style:italic>
+</span><span style=color:#999;font-weight:700;font-style:italic>#include</span> <span style=color:#999;font-weight:700;font-style:italic>&lt;algorithm&gt;</span><span style=color:#999;font-weight:700;font-style:italic>
+</span><span style=color:#999;font-weight:700;font-style:italic>#define LEN 101
+</span><span style=color:#999;font-weight:700;font-style:italic>#define CRAZY &#39;R&#39;
+</span><span style=color:#999;font-weight:700;font-style:italic>#define PLAYER &#39;I&#39;
+</span><span style=color:#999;font-weight:700;font-style:italic>#define EMPTY &#39;.&#39;
+</span><span style=color:#999;font-weight:700;font-style:italic>#define INF 1e9
+</span><span style=color:#999;font-weight:700;font-style:italic></span>
+<span style=color:#000;font-weight:700>using</span> <span style=color:#000;font-weight:700>namespace</span> std;
+
+<span style=color:#458;font-weight:700>int</span> <span style=color:#900;font-weight:700>main</span>() {
+    ios<span style=color:#000;font-weight:700>::</span>sync_with_stdio(<span style=color:#0086b3>false</span>);
+    cin.tie(<span style=color:#0086b3>NULL</span>);
+
+    <span style=color:#458;font-weight:700>int</span> R, C, step <span style=color:#000;font-weight:700>=</span> <span style=color:#099>0</span>;
+    vector<span style=color:#000;font-weight:700>&lt;</span>string<span style=color:#000;font-weight:700>&gt;</span> map;
+    pair<span style=color:#000;font-weight:700>&lt;</span><span style=color:#458;font-weight:700>int</span>,<span style=color:#458;font-weight:700>int</span><span style=color:#000;font-weight:700>&gt;</span> player;
+    vector<span style=color:#000;font-weight:700>&lt;</span>pair<span style=color:#000;font-weight:700>&lt;</span><span style=color:#458;font-weight:700>int</span>,<span style=color:#458;font-weight:700>int</span><span style=color:#000;font-weight:700>&gt;&gt;</span> crazy;
+    string command;
+    <span style=color:#458;font-weight:700>bool</span> is_end <span style=color:#000;font-weight:700>=</span> <span style=color:#0086b3>false</span>;
+    <span style=color:#458;font-weight:700>int</span> dx[] <span style=color:#000;font-weight:700>=</span> {<span style=color:#099>0</span>,<span style=color:#000;font-weight:700>-</span><span style=color:#099>1</span>,<span style=color:#099>0</span>,<span style=color:#099>1</span>,<span style=color:#000;font-weight:700>-</span><span style=color:#099>1</span>,<span style=color:#099>0</span>,<span style=color:#099>1</span>,<span style=color:#000;font-weight:700>-</span><span style=color:#099>1</span>,<span style=color:#099>0</span>,<span style=color:#099>1</span>}; <span style=color:#998;font-style:italic>// 1 ~ 9, 0은 dummy
+</span><span style=color:#998;font-style:italic></span>    <span style=color:#458;font-weight:700>int</span> dy[] <span style=color:#000;font-weight:700>=</span> {<span style=color:#099>0</span>,<span style=color:#099>1</span>,<span style=color:#099>1</span>,<span style=color:#099>1</span>,<span style=color:#099>0</span>,<span style=color:#099>0</span>,<span style=color:#099>0</span>,<span style=color:#000;font-weight:700>-</span><span style=color:#099>1</span>,<span style=color:#000;font-weight:700>-</span><span style=color:#099>1</span>,<span style=color:#000;font-weight:700>-</span><span style=color:#099>1</span>};
+
+    <span style=color:#998;font-style:italic>// 입력
+</span><span style=color:#998;font-style:italic></span>    cin <span style=color:#000;font-weight:700>&gt;&gt;</span> R <span style=color:#000;font-weight:700>&gt;&gt;</span> C;
+    <span style=color:#000;font-weight:700>for</span>(<span style=color:#458;font-weight:700>int</span> i<span style=color:#000;font-weight:700>=</span><span style=color:#099>0</span>; i<span style=color:#000;font-weight:700>&lt;</span>R; i<span style=color:#000;font-weight:700>++</span>){
+        string row;
+        cin <span style=color:#000;font-weight:700>&gt;&gt;</span> row;
+        map.push_back(row);
+        <span style=color:#000;font-weight:700>for</span>(<span style=color:#458;font-weight:700>int</span> j<span style=color:#000;font-weight:700>=</span><span style=color:#099>0</span>; j<span style=color:#000;font-weight:700>&lt;</span>C; j<span style=color:#000;font-weight:700>++</span>){
+            <span style=color:#000;font-weight:700>if</span>(map[i][j] <span style=color:#000;font-weight:700>==</span> CRAZY) crazy.push_back({i, j}); <span style=color:#998;font-style:italic>// y,x
+</span><span style=color:#998;font-style:italic></span>            <span style=color:#000;font-weight:700>if</span>(map[i][j] <span style=color:#000;font-weight:700>==</span> PLAYER) player <span style=color:#000;font-weight:700>=</span> {i, j};
+        }
+    }
+    cin <span style=color:#000;font-weight:700>&gt;&gt;</span> command;
+
+    <span style=color:#000;font-weight:700>for</span>(<span style=color:#458;font-weight:700>char</span> <span style=color:#900;font-weight:700>c</span> : command){
+        <span style=color:#458;font-weight:700>int</span> cmd <span style=color:#000;font-weight:700>=</span> c <span style=color:#000;font-weight:700>-</span> <span style=color:#d14>&#39;0&#39;</span>;
+
+        <span style=color:#998;font-style:italic>// 플레이어 이동
+</span><span style=color:#998;font-style:italic></span>        <span style=color:#458;font-weight:700>int</span> py <span style=color:#000;font-weight:700>=</span> player.first <span style=color:#000;font-weight:700>+</span> dy[cmd];
+        <span style=color:#458;font-weight:700>int</span> px <span style=color:#000;font-weight:700>=</span> player.second <span style=color:#000;font-weight:700>+</span> dx[cmd];
+        step<span style=color:#000;font-weight:700>++</span>;
+
+        is_end <span style=color:#000;font-weight:700>=</span> map[py][px] <span style=color:#000;font-weight:700>==</span> CRAZY; <span style=color:#998;font-style:italic>//R과 충돌 검사
+</span><span style=color:#998;font-style:italic></span>        <span style=color:#000;font-weight:700>if</span>(is_end) <span style=color:#000;font-weight:700>break</span>;
+
+        map[player.first][player.second] <span style=color:#000;font-weight:700>=</span> EMPTY;
+        map[py][px] <span style=color:#000;font-weight:700>=</span> PLAYER;
+        player <span style=color:#000;font-weight:700>=</span> {py, px};
+
+        <span style=color:#998;font-style:italic>//미친 아두이노 이동
+</span><span style=color:#998;font-style:italic></span>        <span style=color:#000;font-weight:700>for</span>(<span style=color:#458;font-weight:700>int</span> i<span style=color:#000;font-weight:700>=</span><span style=color:#099>0</span>; i <span style=color:#000;font-weight:700>&lt;</span> crazy.size(); i<span style=color:#000;font-weight:700>++</span>){
+            <span style=color:#458;font-weight:700>int</span> cy, cx, judge <span style=color:#000;font-weight:700>=</span> INF;
+            <span style=color:#000;font-weight:700>for</span>(<span style=color:#458;font-weight:700>int</span> k<span style=color:#000;font-weight:700>=</span><span style=color:#099>1</span>; k<span style=color:#000;font-weight:700>&lt;=</span><span style=color:#099>9</span>; k<span style=color:#000;font-weight:700>++</span>){
+                <span style=color:#000;font-weight:700>if</span>(k<span style=color:#000;font-weight:700>==</span><span style=color:#099>5</span>) <span style=color:#000;font-weight:700>continue</span>;
+                <span style=color:#458;font-weight:700>int</span> ty <span style=color:#000;font-weight:700>=</span> crazy[i].first <span style=color:#000;font-weight:700>+</span> dy[k];
+                <span style=color:#458;font-weight:700>int</span> tx <span style=color:#000;font-weight:700>=</span> crazy[i].second <span style=color:#000;font-weight:700>+</span> dx[k];
+
+                <span style=color:#000;font-weight:700>if</span>(<span style=color:#099>0</span> <span style=color:#000;font-weight:700>&gt;</span> ty <span style=color:#000;font-weight:700>||</span> ty <span style=color:#000;font-weight:700>&gt;=</span> R <span style=color:#000;font-weight:700>||</span> <span style=color:#099>0</span> <span style=color:#000;font-weight:700>&gt;</span> tx <span style=color:#000;font-weight:700>||</span> tx <span style=color:#000;font-weight:700>&gt;=</span> C) <span style=color:#000;font-weight:700>continue</span>;
+
+                <span style=color:#458;font-weight:700>int</span> val <span style=color:#000;font-weight:700>=</span> abs(py <span style=color:#000;font-weight:700>-</span> ty) <span style=color:#000;font-weight:700>+</span> abs(px <span style=color:#000;font-weight:700>-</span> tx);
+                <span style=color:#000;font-weight:700>if</span>(judge <span style=color:#000;font-weight:700>&gt;</span> val){
+                    judge <span style=color:#000;font-weight:700>=</span> val;
+                    cy <span style=color:#000;font-weight:700>=</span> ty;
+                    cx <span style=color:#000;font-weight:700>=</span> tx;
+                }
+            }
+
+            is_end <span style=color:#000;font-weight:700>=</span> map[cy][cx] <span style=color:#000;font-weight:700>==</span> PLAYER; <span style=color:#998;font-style:italic>// I와 충돌 검사
+</span><span style=color:#998;font-style:italic></span>            <span style=color:#000;font-weight:700>if</span>(is_end) <span style=color:#000;font-weight:700>goto</span> escape;
+
+            map[crazy[i].first][crazy[i].second] <span style=color:#000;font-weight:700>=</span> EMPTY;
+            crazy[i] <span style=color:#000;font-weight:700>=</span> {cy, cx};
+        }
+
+        <span style=color:#998;font-style:italic>//R와 충돌 검사 및 폭팔 처리
+</span><span style=color:#998;font-style:italic></span>        sort(crazy.begin(), crazy.end());
+        vector<span style=color:#000;font-weight:700>&lt;</span>pair<span style=color:#000;font-weight:700>&lt;</span><span style=color:#458;font-weight:700>int</span>,<span style=color:#458;font-weight:700>int</span><span style=color:#000;font-weight:700>&gt;&gt;</span> temp;
+        <span style=color:#000;font-weight:700>for</span>(<span style=color:#458;font-weight:700>int</span> i<span style=color:#000;font-weight:700>=</span><span style=color:#099>0</span>; i <span style=color:#000;font-weight:700>&lt;</span> crazy.size(); i<span style=color:#000;font-weight:700>++</span>){
+            <span style=color:#458;font-weight:700>int</span> j <span style=color:#000;font-weight:700>=</span> i;
+
+            <span style=color:#998;font-style:italic>//충돌이 발생하는 인덱스는 건너뛰기
+</span><span style=color:#998;font-style:italic></span>            <span style=color:#000;font-weight:700>while</span>(j <span style=color:#000;font-weight:700>&lt;</span> crazy.size() <span style=color:#000;font-weight:700>&amp;&amp;</span> crazy[i] <span style=color:#000;font-weight:700>==</span> crazy[j<span style=color:#000;font-weight:700>+</span><span style=color:#099>1</span>]){ 
+                j<span style=color:#000;font-weight:700>++</span>;
+            }
+            <span style=color:#000;font-weight:700>if</span>(i<span style=color:#000;font-weight:700>==</span>j){ <span style=color:#998;font-style:italic>// 충돌이 발생하지 않은 경우
+</span><span style=color:#998;font-style:italic></span>                <span style=color:#458;font-weight:700>int</span> cy <span style=color:#000;font-weight:700>=</span> crazy[i].first;
+                <span style=color:#458;font-weight:700>int</span> cx <span style=color:#000;font-weight:700>=</span> crazy[i].second;
+                map[cy][cx] <span style=color:#000;font-weight:700>=</span> CRAZY;
+                temp.push_back(crazy[i]);
+            }
+            <span style=color:#000;font-weight:700>else</span> i <span style=color:#000;font-weight:700>=</span> j; <span style=color:#998;font-style:italic>// 인덱스 변경 (건너뛰기)
+</span><span style=color:#998;font-style:italic></span>        }
+        crazy <span style=color:#000;font-weight:700>=</span> temp;
+    }
+    <span style=color:#900;font-weight:700>escape</span>:;
+
+    <span style=color:#000;font-weight:700>if</span>(is_end){
+        cout <span style=color:#000;font-weight:700>&lt;&lt;</span> <span style=color:#d14>&#34;kraj &#34;</span> <span style=color:#000;font-weight:700>&lt;&lt;</span> step;
+    }
+    <span style=color:#000;font-weight:700>else</span>{
+        <span style=color:#000;font-weight:700>for</span>(<span style=color:#458;font-weight:700>int</span> i<span style=color:#000;font-weight:700>=</span><span style=color:#099>0</span>; i<span style=color:#000;font-weight:700>&lt;</span>R; i<span style=color:#000;font-weight:700>++</span>){
+            cout <span style=color:#000;font-weight:700>&lt;&lt;</span> map[i] <span style=color:#000;font-weight:700>&lt;&lt;</span> <span style=color:#d14>&#39;\n&#39;</span>;
+        }
+    }
+}
+</code></pre></div><hr><ul class=pager><li class=next><a href=/post/2020-12-29-b_17472/ data-toggle=tooltip data-placement=top title="[백준] 17472. 다리 만들기 2">Next
+Post &rarr;</a></li></ul><script src=https://utteranc.es/client.js repo=Altera520/blog-comment issue-term=comment theme=github-light crossorigin=anonymous async></script><div id=comments><div id=utterances></div><noscript>Please enable JavaScript to view the comments powered by <a href=https://utteranc.es/>Utterances</a>.</noscript></div></div><div class="col-lg-2 col-lg-offset-0
+visible-lg-block
+sidebar-container
+catalog-container"><div class=side-catalog><hr class="hidden-sm hidden-xs"><h5><a class=catalog-toggle href=#>CATALOG</a></h5><ul class=catalog-body></ul></div></div><div class="col-lg-8 col-lg-offset-2
+col-md-10 col-md-offset-1
+sidebar-container"></div></div></div></article><footer><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><p class="copyright text-muted">Copyright &copy; Jun Blog 2022<br><a href=https://themes.gohugo.io/hugo-theme-cleanwhite>CleanWhite Hugo Theme</a> by <a href=https://zhaohuabing.com>Huabing</a></p></div></div></div></footer><script>function loadAsync(u,c){var d=document,t='script',o=d.createElement(t),s=d.getElementsByTagName(t)[0];o.src=u;if(c){o.addEventListener('load',function(e){c(null,e);},false);}
+s.parentNode.insertBefore(o,s);}</script><script>if($('#tag_cloud').length!==0){loadAsync("/js/jquery.tagcloud.js",function(){$.fn.tagcloud.defaults={color:{start:'#bbbbee',end:'#0085a1'},};$('#tag_cloud a').tagcloud();})}</script><script>loadAsync("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js",function(){var $nav=document.querySelector("nav");if($nav)FastClick.attach($nav);})</script><script type=application/javascript>var doNotTrack=false;if(!doNotTrack){window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;ga('create','G-0HZQPQBVVJ','auto');ga('send','pageview');}</script><script async src=https://www.google-analytics.com/analytics.js></script><script type=text/javascript>function generateCatalog(selector){_containerSelector='div.post-container'
+var P=$(_containerSelector),a,n,t,l,i,c;a=P.find('h1,h2,h3,h4,h5,h6');$(selector).html('')
+a.each(function(){n=$(this).prop('tagName').toLowerCase();i="#"+$(this).prop('id');t=$(this).text();c=$('<a href="'+i+'" rel="nofollow">'+t+'</a>');l=$('<li class="'+n+'_nav"></li>').append(c);$(selector).append(l);});return true;}
+generateCatalog(".catalog-body");$(".catalog-toggle").click((function(e){e.preventDefault();$('.side-catalog').toggleClass("fold")}))
+loadAsync("\/js\/jquery.nav.js",function(){$('.catalog-body').onePageNav({currentClass:"active",changeHash:!1,easing:"swing",filter:"",scrollSpeed:700,scrollOffset:0,scrollThreshold:.2,begin:null,end:null,scrollChange:null,padding:80});});</script></body></html>

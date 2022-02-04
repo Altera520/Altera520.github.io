@@ -1,0 +1,78 @@
+<!doctype html><html lang=en-us><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><meta property="og:site_name" content="Jun Blog"><meta property="og:type" content="article"><meta property="og:image" content="https://zhaohuabing.com/img/ma.png"><meta property="twitter:image" content="https://zhaohuabing.com/img/ma.png"><meta name=title content="[백준] 9466. 텀 프로젝트"><meta property="og:title" content="[백준] 9466. 텀 프로젝트"><meta property="twitter:title" content="[백준] 9466. 텀 프로젝트"><meta name=description content><meta property="og:description" content><meta property="twitter:description" content><meta property="twitter:card" content="summary"><meta name=keyword content><link rel="shortcut icon" href=/img/favicon.ico><title>[백준] 9466. 텀 프로젝트</title><link rel=canonical href=/post/2020-12-29-b_9466/><link rel=stylesheet href=/css/iDisqus.min.css><link rel=stylesheet href=/css/bootstrap.min.css><link rel=stylesheet href=/css/hugo-theme-cleanwhite.min.css><link rel=stylesheet href=/css/zanshang.css><link href=//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css rel=stylesheet type=text/css><link rel=stylesheet href=https://zhaohuabing.com/css/gj.css><link rel=preconnect href=https://fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link href="https://fonts.googleapis.com/css2?family=Nothing+You+Could+Do&display=swap" rel=stylesheet><script src=/js/jquery.min.js></script><script src=/js/bootstrap.min.js></script><script src=/js/hux-blog.min.js></script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css><script defer src=https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js></script><script defer src=https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js onload=renderMathInElement(document.body);></script><script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}]});});</script></head><nav class="navbar navbar-default navbar-custom navbar-fixed-top"><div class=container-fluid><div class="navbar-header page-scroll"><button type=button class=navbar-toggle>
+<span class=sr-only>Toggle navigation</span>
+<span class=icon-bar></span><span class=icon-bar></span><span class=icon-bar></span></button>
+<a id=custom-navbar-brand style=color:#fff class=navbar-brand href=/>Jun Blog</a></div><div id=huxblog_navbar><div class=navbar-collapse><ul class="nav navbar-nav navbar-right"><li><a href=/>Home</a></li><li><a href=/top/archive/>Archive</a></li><li><a href=/top/tags/>Tags</a></li><li><a href=/search><i class="fa fa-search"></i></a></li></ul></div></div></div></nav><script>var $body=document.body;var $toggle=document.querySelector('.navbar-toggle');var $navbar=document.querySelector('#huxblog_navbar');var $collapse=document.querySelector('.navbar-collapse');$toggle.addEventListener('click',handleMagic)
+function handleMagic(e){if($navbar.className.indexOf('in')>0){$navbar.className=" ";setTimeout(function(){if($navbar.className.indexOf('in')<0){$collapse.style.height="0px"}},400)}else{$collapse.style.height="auto"
+$navbar.className+=" in";}}</script><style type=text/css>header.intro-header{background-image:url(/img/ma.png)}</style><header class=intro-header><div class=blur><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><div class=post-heading><div class=tags><a class=tag href=/tags/%EB%B0%B1%EC%A4%80 title=백준>백준</a>
+<a class=tag href=/tags/topology-sort title="Topology Sort">Topology Sort</a></div><h1>[백준] 9466. 텀 프로젝트</h1><h2 class=subheading></h2><span class=meta>Posted by
+Jun Blog
+on
+Tuesday, December 29, 2020</span></div></div></div></div></div></header><article><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2
+col-md-10 col-md-offset-1
+post-container"><h2 id=문제-설명>문제 설명</h2><p><strong>문제</strong> : <a href=https://www.acmicpc.net/problem/9466>백준 9466번 - 텀 프로젝트</a></p><p>학생들은 프로젝트 팀을 구성하기 위해 프로젝트를 함께하고 싶은 1명의 학생을 선택해야한다.<br>자기자신을 선택하는 경우도 있다. (이 경우도 팀으로 간주)</p><p>학생들이$(s_1, s_2, &mldr;, s_r)$이라 할 때, r=1이고 $s_1$이 $s_1$을 선택하는 경우나, $s_1$이 $s_2$를 선택하고, $s_2$가 $s_3$를 선택하고,&mldr;, $s_{r-1}$이 $s_r$을 선택하고, $s_r$이 $s_1$을 선택하는 경우에만 한 팀이 될 수 있다.</p><p>학생들이 선택한 결과를 통해 팀으로 구성되지 않는 학생들의 수를 출력한다.</p><h2 id=solution>Solution</h2><p>문제에서 팀이 성립되는 경우는 선택한 학생들간에 사이클을 형성하는지 여부이다.<br>따라서 학생들이 선택한 결과를 통해 팀으로 구성되지 않는 학생들을 구하라는 말인즉슨 사이클을 형성하지 않는 학생들을 구하라는 말과도 동일하다.</p><p>문제에서 주어진 예시케이스를 가지고 방향 그래프를 구성하면 다음과 같아지며 학생들 중 $(3)$, $(4, 6, 7)$이 사이클을 형성하고 있음을 확인할 수 있다.</p><table><thead><tr><th style=text-align:center>1</th><th style=text-align:center>2</th><th style=text-align:center>3</th><th style=text-align:center>4</th><th style=text-align:center>5</th><th style=text-align:center>6</th><th style=text-align:center>7</th></tr></thead><tbody><tr><td style=text-align:center>3</td><td style=text-align:center>1</td><td style=text-align:center>3</td><td style=text-align:center>7</td><td style=text-align:center>3</td><td style=text-align:center>4</td><td style=text-align:center>6</td></tr></tbody></table><p><img src=/img/2020-12-29-b_9466/step1.png alt></p><p>사이클을 판별하기 위해 DFS를 사용할 수도 있고, 위상정렬을 사용할 수도 있다.<br>본인은 문제를 해결하기위해 위상정렬을 사용하였다.<br>위상정렬은 사이클이 발생한 노드들에 대해서는 위상정렬을 수행할 수 없게되므로 DAG(Directed Acyclic Graph)에만 적용이 가능하다.<br>즉, 사이클이 발생하기 전까지는 위상정렬을 수행할 수 있다. 이 부분에 착안하여 본 문제에서는 요구하고 있는 사이클이 발생하지 않은 학생들의 수를 구하기위해 사이클이 발생하기 전까지 정렬이 수행되는 횟수를 카운트해주기로 했다.</p><h3 id=수행단계-위상정렬>수행단계 (위상정렬)</h3><ol><li><strong>학생들이 선택한 결과를 통해 방향 그래프를 구성한다.</strong></li><li><strong>첫번째부터 마지막까지 순회하여 진입차수가 0인 학생들을 큐에 삽입한다.</strong></li><li><strong>사이클이 발생하지 않는 경우를 카운트한다.</strong><ol><li>큐의 front에 있는 노드와 연결된 다른 노드들의 진입차수를 1만큼 감소시킨다.</li><li>연결된 다른 노드 중 진입차수가 0인 노드를 큐에 삽입한다.</li><li>큐의 front에 있는 노드를 제거한다.</li><li>카운트 값을 증가시킨다.</li><li>큐가 empty일 때까지 반복한다.</li></ol></li></ol><p>주어진 예시케이스를 가지고 위의 단계들을 수행하면 3명의 학생들이 팀을 구성하지 못하는 것을 알 수 있다.</p><ul><li><p>진입차수가 0인 2와 5를 큐에 삽입한다. <strong>(카운트는 2)</strong></p><p><img src=/img/2020-12-29-b_9466/step2.png alt></p></li></ul><ul><li><p>큐에서 2를 꺼내고 2와 연결된 1의 진입차수를 감소시킨다. 이 때, 1은 진입차수가 0이 되므로 큐에 삽입한다. <strong>(카운트는 3)</strong><br>큐에서 5를 꺼내고 5와 연결된 3의 진입차수를 감소시킨다.</p><p><img src=/img/2020-12-29-b_9466/step3.png alt></p></li></ul><ul><li><p>큐에서 1을 꺼내고 1이랑 연결된 3의 진입차수를 감소시킨다.</p><p><img src=/img/2020-12-29-b_9466/step5.png alt></p></li></ul><ul><li><p>큐가 비었으므로 반복을 종료한다.</p><p><img src=/img/2020-12-29-b_9466/step6.png alt></p></li></ul><h2 id=code>Code</h2><h3 id=위상정렬을-사용한-코드>위상정렬을 사용한 코드</h3><div class=highlight><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=color:#999;font-weight:700;font-style:italic>#include</span> <span style=color:#999;font-weight:700;font-style:italic>&lt;iostream&gt;</span><span style=color:#999;font-weight:700;font-style:italic>
+</span><span style=color:#999;font-weight:700;font-style:italic>#include</span> <span style=color:#999;font-weight:700;font-style:italic>&lt;vector&gt;</span><span style=color:#999;font-weight:700;font-style:italic>
+</span><span style=color:#999;font-weight:700;font-style:italic>#include</span> <span style=color:#999;font-weight:700;font-style:italic>&lt;queue&gt;</span><span style=color:#999;font-weight:700;font-style:italic>
+</span><span style=color:#999;font-weight:700;font-style:italic></span><span style=color:#000;font-weight:700>using</span> <span style=color:#000;font-weight:700>namespace</span> std;
+
+<span style=color:#458;font-weight:700>int</span> <span style=color:#900;font-weight:700>main</span>() {
+    ios<span style=color:#000;font-weight:700>::</span>sync_with_stdio(<span style=color:#0086b3>false</span>);
+    cin.tie(<span style=color:#0086b3>NULL</span>);
+
+    <span style=color:#458;font-weight:700>int</span> tc;
+    cin <span style=color:#000;font-weight:700>&gt;&gt;</span> tc;
+    <span style=color:#000;font-weight:700>while</span>(tc<span style=color:#000;font-weight:700>--</span> <span style=color:#000;font-weight:700>&gt;</span> <span style=color:#099>0</span>){
+        <span style=color:#458;font-weight:700>int</span> n, ans <span style=color:#000;font-weight:700>=</span> <span style=color:#099>0</span>;
+        vector<span style=color:#000;font-weight:700>&lt;</span>vector<span style=color:#000;font-weight:700>&lt;</span><span style=color:#458;font-weight:700>int</span><span style=color:#000;font-weight:700>&gt;&gt;</span> graph;
+        vector<span style=color:#000;font-weight:700>&lt;</span><span style=color:#458;font-weight:700>int</span><span style=color:#000;font-weight:700>&gt;</span> indegree;
+        queue<span style=color:#000;font-weight:700>&lt;</span><span style=color:#458;font-weight:700>int</span><span style=color:#000;font-weight:700>&gt;</span> q;
+
+        cin <span style=color:#000;font-weight:700>&gt;&gt;</span> n;
+
+        graph.resize(n<span style=color:#000;font-weight:700>+</span><span style=color:#099>1</span>);
+        indegree.resize(n<span style=color:#000;font-weight:700>+</span><span style=color:#099>1</span>);
+
+        <span style=color:#998;font-style:italic>//그래프 생성
+</span><span style=color:#998;font-style:italic></span>        <span style=color:#000;font-weight:700>for</span>(<span style=color:#458;font-weight:700>int</span> from<span style=color:#000;font-weight:700>=</span><span style=color:#099>1</span>; from<span style=color:#000;font-weight:700>&lt;=</span>n; from<span style=color:#000;font-weight:700>++</span>){
+            <span style=color:#458;font-weight:700>int</span> to;
+            cin <span style=color:#000;font-weight:700>&gt;&gt;</span> to;
+            graph[from].push_back(to);
+            indegree[to]<span style=color:#000;font-weight:700>++</span>;
+        }
+
+        <span style=color:#998;font-style:italic>//진입차수가 0인 그래프 탐색
+</span><span style=color:#998;font-style:italic></span>        <span style=color:#000;font-weight:700>for</span>(<span style=color:#458;font-weight:700>int</span> i<span style=color:#000;font-weight:700>=</span><span style=color:#099>1</span>; i<span style=color:#000;font-weight:700>&lt;=</span>n; i<span style=color:#000;font-weight:700>++</span>){
+            <span style=color:#000;font-weight:700>if</span>(indegree[i] <span style=color:#000;font-weight:700>==</span> <span style=color:#099>0</span>) q.push(i);
+        }
+
+        <span style=color:#000;font-weight:700>while</span>(<span style=color:#000;font-weight:700>!</span>q.empty()){
+            <span style=color:#458;font-weight:700>int</span> cur <span style=color:#000;font-weight:700>=</span> q.front();
+            ans<span style=color:#000;font-weight:700>++</span>;
+            q.pop();
+
+            <span style=color:#998;font-style:italic>//진입차수 제거
+</span><span style=color:#998;font-style:italic></span>            <span style=color:#000;font-weight:700>for</span>(<span style=color:#458;font-weight:700>int</span> <span style=color:#900;font-weight:700>next</span> : graph[cur]){
+                indegree[next] <span style=color:#000;font-weight:700>-=</span> <span style=color:#099>1</span>;
+
+                <span style=color:#998;font-style:italic>//새롭게 진입차수가 0이 되는 노드 삽입
+</span><span style=color:#998;font-style:italic></span>                <span style=color:#000;font-weight:700>if</span>(indegree[next] <span style=color:#000;font-weight:700>==</span> <span style=color:#099>0</span>){ 
+                    q.push(next);
+                }
+            }
+        }
+
+        cout <span style=color:#000;font-weight:700>&lt;&lt;</span> ans <span style=color:#000;font-weight:700>&lt;&lt;</span> <span style=color:#d14>&#39;\n&#39;</span>;
+    }
+}
+</code></pre></div><hr><ul class=pager><li class=previous><a href=/post/2020-12-29-b_17472/ data-toggle=tooltip data-placement=top title="[백준] 17472. 다리 만들기 2">&larr;
+Previous Post</a></li><li class=next><a href=/post/2020-12-31-back_tracking/ data-toggle=tooltip data-placement=top title="백트래킹 (Back Tracking)">Next
+Post &rarr;</a></li></ul><script src=https://utteranc.es/client.js repo=Altera520/blog-comment issue-term=comment theme=github-light crossorigin=anonymous async></script><div id=comments><div id=utterances></div><noscript>Please enable JavaScript to view the comments powered by <a href=https://utteranc.es/>Utterances</a>.</noscript></div></div><div class="col-lg-2 col-lg-offset-0
+visible-lg-block
+sidebar-container
+catalog-container"><div class=side-catalog><hr class="hidden-sm hidden-xs"><h5><a class=catalog-toggle href=#>CATALOG</a></h5><ul class=catalog-body></ul></div></div><div class="col-lg-8 col-lg-offset-2
+col-md-10 col-md-offset-1
+sidebar-container"></div></div></div></article><footer><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><p class="copyright text-muted">Copyright &copy; Jun Blog 2022<br><a href=https://themes.gohugo.io/hugo-theme-cleanwhite>CleanWhite Hugo Theme</a> by <a href=https://zhaohuabing.com>Huabing</a></p></div></div></div></footer><script>function loadAsync(u,c){var d=document,t='script',o=d.createElement(t),s=d.getElementsByTagName(t)[0];o.src=u;if(c){o.addEventListener('load',function(e){c(null,e);},false);}
+s.parentNode.insertBefore(o,s);}</script><script>if($('#tag_cloud').length!==0){loadAsync("/js/jquery.tagcloud.js",function(){$.fn.tagcloud.defaults={color:{start:'#bbbbee',end:'#0085a1'},};$('#tag_cloud a').tagcloud();})}</script><script>loadAsync("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js",function(){var $nav=document.querySelector("nav");if($nav)FastClick.attach($nav);})</script><script type=application/javascript>var doNotTrack=false;if(!doNotTrack){window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;ga('create','G-0HZQPQBVVJ','auto');ga('send','pageview');}</script><script async src=https://www.google-analytics.com/analytics.js></script><script type=text/javascript>function generateCatalog(selector){_containerSelector='div.post-container'
+var P=$(_containerSelector),a,n,t,l,i,c;a=P.find('h1,h2,h3,h4,h5,h6');$(selector).html('')
+a.each(function(){n=$(this).prop('tagName').toLowerCase();i="#"+$(this).prop('id');t=$(this).text();c=$('<a href="'+i+'" rel="nofollow">'+t+'</a>');l=$('<li class="'+n+'_nav"></li>').append(c);$(selector).append(l);});return true;}
+generateCatalog(".catalog-body");$(".catalog-toggle").click((function(e){e.preventDefault();$('.side-catalog').toggleClass("fold")}))
+loadAsync("\/js\/jquery.nav.js",function(){$('.catalog-body').onePageNav({currentClass:"active",changeHash:!1,easing:"swing",filter:"",scrollSpeed:700,scrollOffset:0,scrollThreshold:.2,begin:null,end:null,scrollChange:null,padding:80});});</script></body></html>
