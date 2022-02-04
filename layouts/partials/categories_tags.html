@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+          <div class="tag-cloud-tags">
+            {{ if .Site.Taxonomies.tags }}
+                {{ $featured_condition_size := .Site.Params.featured_condition_size }}
+                {{ range $name, $taxonomy := .Site.Taxonomies.tags }}
+                    <a href="{{ "/tags/" | relLangURL }}{{ $name | urlize }}" title="{{ $name }}">
+                        {{ $name }}
+                        <sup>{{ .Count }}</sup>
+                    </a>
+                {{ end }}
+            {{ end }}
+          </div>
+      </div>
+  </div>
+</div>        

@@ -1,0 +1,327 @@
+
+#custom-sidebar-container {
+  padding: 30px 20px;
+  background-color: #fff;
+  border: 1px solid #e7eaf1;
+  border-radius: 3px;
+  box-sizing: border-box;
+  box-shadow: 0 1px 3px rgba(0,37,55,.06);
+  width: 240px;
+}
+
+@media (max-width:991px){
+  .sidebar-container {
+    display: none;
+  }
+}
+
+.short-about {
+  text-align: center;
+}
+
+.sidebar-container .short-about img {
+  width: 90px;
+  /* height: 90px; */
+  border-radius: 50%;
+  margin: 0 auto;
+  overflow: hidden;
+  /* box-shadow: 0 1px 4px rgba(100,110,120,.53); */
+  border-style: none;
+  display: inline-block;
+  background-color: #f4edea;
+}
+
+.sidebar-container .short-about .author-name {
+  width: 100%;
+  font-size: 16px;
+  color: #4e4e4e;
+  font-weight: 500;
+  margin: 12px 0 6px;
+}
+
+.sidebar-container .short-about p {
+  font-size: 14px;
+  line-height: 15px;
+  margin-bottom: 10px;
+  color:#656565
+}
+
+.sidebar-container .tags a {
+  display: inline-block;
+  width: auto;
+  height: 22px;
+  padding: 0 8px;
+  font-size: 14px;
+  color: #83888f;
+  font-family: -apple-system,Verdana,"PingFang SC","Helvetica Neue",Arial,"Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
+  line-height: 22px;
+  box-sizing: border-box;
+  box-shadow: 0 0 .6px #d5dae1;
+  border-radius: 2px;
+  background-color: #fafafa;
+  cursor: pointer;
+  margin-right: 2px;
+  transition: .2s;
+  border: none;
+  font-size: 14px;
+  text-decoration: none;
+  margin-bottom: 8px;
+}
+
+.list-inline {
+  margin-left: 0;
+}
+
+.navbar-custom {
+  font-family: -apple-system,Verdana,"PingFang SC","Helvetica Neue",Arial,"Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
+  padding: 0 12px;
+}
+
+.navbar-custom .nav li a {
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: #fff;
+}
+
+.post-container {
+  font-size: 16px;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+footer {
+  font-family: "Source Sans Pro",sans-serif;
+  padding: 24px 0 32px 0;
+  background-color: #f6f9fc;
+  border-top: 1px solid #D8E0E7;
+  border-bottom: 1px solid #D8E0E7;
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+}
+
+.text-muted {
+  color: #8898aa;
+}
+
+article, body > .container {
+  padding-bottom: 134px;
+  position: relative;
+}
+
+footer .container p {
+  margin: 0;
+}
+
+body {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.side-catalog {
+  position: absolute;
+  top: 0;
+  height: auto;
+}
+
+.custom-len {
+  font-size: 12px;
+}
+
+.blur {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.intro-header .post-heading {
+  padding: 130px 0;
+}
+
+.intro-header .site-heading h1{
+  padding: 0;
+  font-family: 'Nothing You Could Do', cursive;
+}
+
+.intro-header .site-heading .subheading {
+  margin-top: 15px;
+  font-size: 18px;
+  font-family: fell, Georgia, Cambria, "Times New Roman", Times, serif;
+}
+
+.tag-cloud-tags {
+  margin: 30px 0;
+}
+
+.tag-cloud-tags a {
+  display: inline-block;
+  position: relative;
+  margin: 5px 10px;
+  font-family: "Source Sans Pro","APPLE SD Gothic Neo",HelveticaNeue,Helvetica,"NanumGothic","맑은 고딕","Malgun Gothic",arial,sans-serif,"Source Sans Pro",sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.5rem;
+  transition: all ease-out 0.3s;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.tag-cloud-tags a sup {
+  color: #a9a9b3;
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+#custom-navbar-brand {
+  font-family: 'Nothing You Could Do', cursive;
+  color: #90949a;
+}
+
+.post-preview > a > .post-title {
+  color: #333e4c;
+  font-family: -apple-system,'BlinkMacSystemFont','Segoe UI','Roboto','Helvetica','Arial',sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol';
+  font-size: 24px;
+}
+
+.post-content-preview {
+  color: #90949a;
+  font-size: 15px;
+  line-height: 1.5;
+  font-style: normal;
+}
+
+.post-preview .post-meta {
+  /* font-style: normal; */
+  /* font-family: 'Nothing You Could Do', cursive; */
+  margin-top: 5px;
+}
+
+header .post-heading h1 {
+  font-family: 'Nanum Myeongjo';
+  font-size: 34pt;
+  font-weight: 400;;
+  word-break: break-word;
+  letter-spacing: -.07em;
+  line-height: 40pt;
+}
+
+h2, h3, h4, h5, h6 {
+  color: #333e4c;
+  /* font-family: "Source Sans Pro","APPLE SD Gothic Neo",HelveticaNeue,Helvetica,"NanumGothic","맑은 고딕","Malgun Gothic",arial,sans-serif,"Source Sans Pro",sans-serif;
+  margin-block-start: 0.67em;
+  margin-block-end: 0.67em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  display: block;
+  letter-spacing: -0.009em;
+  font-weight: 700; */
+  font-weight: 700;
+}
+
+.custom-pagination {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  list-style: none;
+  white-space: nowrap;
+  width: 100%;
+  padding: 2rem 0 0;
+}
+
+.custom-pagination li {
+  padding-bottom: 3px;
+  margin: 0 17px;
+  box-sizing: border-box;
+  position: relative;
+  display: inline;
+  text-align: -webkit-match-parent;
+}
+
+.custom-pagination li.active a {
+  color: #000;
+}
+
+.custom-pagination li:before, .custom-pagination li:after {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 3px;
+  background: #000;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+  bottom: 0px;
+}
+
+.custom-pagination li:before {
+  left: 50%;
+}
+
+.custom-pagination li:after {
+  right: 50%;
+}
+
+.custom-pagination li.active:before, .custom-pagination li.active:after {
+  width: 60%;
+} 
+
+.custom-pagination a {
+  font-size: 13px;
+  color: #bfbfbf;
+  letter-spacing: .1rem;
+  font-weight: 700;
+  padding: 5px 5px;
+  text-decoration: none;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.custom-pagination a:hover, .custom-pagination a:focus {
+  color: #000;
+}
+
+.custom-pagination a::before, .custom-pagination a::after {
+  text-decoration: none;
+  color: #161209;
+}
+
+::selection {
+  background-color: rgba(53,166,247,0.25);
+}
+
+::-webkit-scrollbar-thumb {
+  height: 17%;
+  background-color: #c1c1c1;
+  border-radius: 10px;
+}
+
+.post-container ul, .post-container ol {
+  margin-bottom: 20px;
+}
+
+#tag-header {
+  color: #666;
+  word-wrap: break-word;
+}
+
+#d3-graph .node-label { font-size: 14px; font-weight:bold; color:#111; stroke: white;stroke-width: 1.5px;paint-order: stroke fill; text-anchor: middle;}
+
+
+#dt {
+  font-style: normal;
+  font-family: "Source Sans Pro","APPLE SD Gothic Neo",HelveticaNeue,Helvetica,"NanumGothic","맑은 고딕","Malgun Gothic",arial,sans-serif,"Source Sans Pro",sans-serif;
+  margin-top: 12px;
+  font-size: 14px;
+  color: #a9a9b3;
+}

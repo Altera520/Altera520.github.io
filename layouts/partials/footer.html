@@ -1,100 +1,170 @@
-{{- $profile := .Site.Params.home.profile -}}
-{{- if ne .Site.Params.footer.enable false -}}
-    <footer class="footer">
-        <div class="footer-container">
-            {{- /* Custom Content */ -}}
-            {{- with .Site.Params.footer.custom -}}
-                <div class="footer-line">
-                    {{- safeHTML . -}}
-                </div>
-            {{- end -}}
-
-            {{- /* Hugo and LoveIt */ -}}
-            {{- if ne .Site.Params.footer.hugo false -}}
-                <div class="footer-line">
-                    {{- $hugo := printf `<a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo %v">Hugo</a>` hugo.Version -}}
-                    {{- $theme := .Scratch.Get "version" | printf `<a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt %v"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>` -}}
-                    {{- dict "Hugo" $hugo "Theme" $theme | T "poweredBySome" | safeHTML }}
-                </div>
-            {{- end -}}
-
-            <div class="footer-line">
-                {{- /* Copyright year */ -}}
-                {{- if ne .Site.Params.footer.copyright false -}}
-                    <i class="far fa-copyright fa-fw"></i>
-                    {{- with .Site.Params.footer.since -}}
-                        <span itemprop="copyrightYear">
-                            {{- if lt . now.Year }}{{ . }} - {{ end }}{{ now.Year -}}
-                        </span>
-                    {{- else -}}
-                        <span itemprop="copyrightYear">{{ now.Year }}</span>
-                    {{- end -}}
-                {{- end -}}
-
-                {{- /* Author */ -}}
-                {{- if ne .Site.Params.footer.author false -}}
-                    <span class="author" itemprop="copyrightHolder">&nbsp;<a href="{{ $.Site.Author.link | default .Site.Home.RelPermalink }}" target="_blank">{{ .Site.Author.name }}</a></span>
-                {{- end -}}
-
-                {{- /* License */ -}}
-                {{- with .Site.Params.footer.license -}}
-                    &nbsp;|&nbsp;<span class="license">{{ . | safeHTML }}</span>
-                {{- end -}}
-
-                {{- /* ICP */ -}}
-                {{- with .Site.Params.footer.icp -}}
-                    <span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
-                    <span class="icp">{{ . | safeHTML }}</span>
-                {{- end -}}
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+		<p class="copyright text-muted">
+                    Copyright &copy; {{ .Site.Title }} {{ now.Year }} {{- if .Site.Params.icp }} | {{ with .Site.Params.icp }}{{ . | markdownify }}{{ end }}{{- end}}
+                    <br>
+                    <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a>
+                </p>
             </div>
-
-            {{- if $profile.social -}}
-            <div class="links">
-                {{- $socialMap := resources.Get "data/social.yml" | transform.Unmarshal -}}
-                {{- $socialArr := slice -}}
-                {{- range $key, $value := .Site.Params.social -}}
-                    {{- $social := $key | lower | index $socialMap | default dict -}}
-                    {{- if $value -}}
-                        {{- if reflect.IsMap $value -}}
-                            {{- with $value.weight -}}
-                                {{- $social = dict "Weight" . | merge $social -}}
-                            {{- end -}}
-                            {{- with $value.prefix -}}
-                                {{- $social = dict "Prefix" . | merge $social -}}
-                            {{- end -}}
-                            {{- with $value.template -}}
-                                {{- $social = dict "Template" . | merge $social -}}
-                            {{- end -}}
-                            {{- with $value.id -}}
-                                {{- $social = dict "Id" . | merge $social -}}
-                            {{- end -}}
-                            {{- with $value.url -}}
-                                {{- $social = dict "Url" . | merge $social -}}
-                            {{- end -}}
-                            {{- with $value.title -}}
-                                {{- $social = dict "Title" . | merge $social -}}
-                            {{- end -}}
-                            {{- with $value.newtab -}}
-                                {{- $social = dict "Newtab" . | merge $social -}}
-                            {{- end -}}
-                            {{- with $value.icon -}}
-                                {{- $social = dict "Icon" . | merge $social -}}
-                            {{- end -}}
-                        {{- else if ne $value true -}}
-                            {{- $social = dict "Id" $value | merge $social -}}
-                        {{- end -}}
-                        {{- if $social.Icon.Simpleicons -}}
-                            {{- $prefix := ($.Scratch.Get "cdn" | default dict).simpleIconsPrefix -}}
-                            {{- $social = dict "Prefix" $prefix | dict "Icon" | merge $social -}}
-                        {{- end -}}
-                        {{- $socialArr = $socialArr | append $social -}}
-                    {{- end -}}
-                {{- end -}}
-                {{- range sort $socialArr "Weight" -}}
-                    {{- partial "plugin/social.html" . -}}
-                {{- end -}}
-            </div>
-        {{- end -}}
         </div>
-    </footer>
-{{- end -}}
+    </div>
+</footer>
+
+
+
+<!-- async load function -->
+<script>
+    function loadAsync(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+-->
+<!--
+    <script>
+        loadAsync("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        loadAsync("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    loadAsync("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+<!-- push page to Baidu -->
+{{ if .Site.Params.ba_track_id }}
+<script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https'){
+       bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      }
+      else{
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+
+<!-- Baidu Tongji -->
+<script>
+    // dynamic User by Hux
+    var _baId = '{{ .Site.Params.ba_track_id }}';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+{{ end }}
+
+{{ if .Site.GoogleAnalytics }}
+{{ template "_internal/google_analytics_async.html" . }}
+{{ end }}
+
+
+<!-- Side Catalog -->
+{{ if not (eq (.Param "showtoc") false) }}
+<script type="text/javascript">
+    function generateCatalog(selector) {
+
+        // interop with multilangual
+        //if ('page.multilingual' == 'true') {
+        //    _containerSelector = 'div.post-container.active'
+        //} else {
+            _containerSelector = 'div.post-container'
+        //}
+
+        // init
+        var P = $(_containerSelector), a, n, t, l, i, c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+
+        // clean
+        $(selector).html('')
+
+        // appending
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#" + $(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="' + i + '" rel="nofollow">' + t + '</a>');
+            l = $('<li class="' + n + '_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;
+    }
+
+    generateCatalog(".catalog-body");
+
+    // toggle side catalog
+    $(".catalog-toggle").click((function (e) {
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    /*
+     * Doc: https://github.com/davist11/jQuery-One-Page-Nav
+     * Fork by Hux to support padding
+     */
+
+    loadAsync("{{ "js/jquery.nav.js" | relURL }}", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
+{{ end }}
